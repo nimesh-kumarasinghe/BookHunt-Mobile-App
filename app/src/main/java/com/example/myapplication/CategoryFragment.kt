@@ -1,15 +1,26 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
+private lateinit var adapter: CategoryAdapter
+private lateinit var recyclerView: RecyclerView
+private lateinit var categoryArrayList: ArrayList<Category>
+
+lateinit var categoryImgId : Array<Int>
+lateinit var catName : Array<String>
 
 /**
  * A simple [Fragment] subclass.
@@ -55,5 +66,67 @@ class CategoryFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dataInitialize()
+        val layoutManager = LinearLayoutManager(context)
+        recyclerView = view.findViewById(R.id.category_recyclerview)
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
+        recyclerView.setHasFixedSize(true)
+        adapter=CategoryAdapter(categoryArrayList)
+        recyclerView.adapter = adapter
+
+        adapter.setOnItemClickListener(object : CategoryAdapter.onItemClickListner {
+            override fun onItemClick(position: Int) {
+                var myIntent = Intent(context, Testing::class.java)
+
+                startActivity(myIntent)
+            }
+
+        })
+
+
+    }
+
+
+    private fun dataInitialize() {
+        categoryArrayList = arrayListOf<Category>()
+
+        categoryImgId = arrayOf(
+            R.drawable.sampleimage,
+            R.drawable.sampleimage,
+            R.drawable.sampleimage,
+            R.drawable.sampleimage,
+            R.drawable.sampleimage,
+            R.drawable.sampleimage,
+            R.drawable.sampleimage,
+            R.drawable.sampleimage
+
+        )
+
+        catName = arrayOf(
+            getString(R.string.cat_name),
+
+            getString(R.string.cat_name),
+            getString(R.string.cat_name),
+            getString(R.string.cat_name),
+            getString(R.string.cat_name),
+            getString(R.string.cat_name),
+            getString(R.string.cat_name),
+            getString(R.string.cat_name),
+            getString(R.string.cat_name)
+
+
+        )
+
+
+        for (i in categoryImgId.indices) {
+            val category = Category(categoryImgId[i], catName[i])
+            categoryArrayList.add(category)
+        }
+
+
     }
 }
