@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckoutMethod">
+
+    <ImageButton
+        android:id="@+id/Btn_back"
+        android:layout_width="40dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#fff"
+        android:src="@drawable/blue_arrow_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+
+        android:id="@+id/txt_checkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="156dp"
+        android:fontFamily="@font/segoe_ui_reg"
+        android:text="Checkout"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_confirm_order"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toEndOf="@+id/Btn_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txt_checkout_order"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/segoeuibld"
+        android:text="Checkout"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txt_shipping_to"
+        android:layout_width="122dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_sb"
+        android:text="Shipping To:"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_checkout_order" />
+
+    <View
+
+        android:id="@+id/view_checkout"
+        android:layout_width="345dp"
+        android:layout_height="88dp"
+        android:background="@drawable/checkout_backgrnd"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.296"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/txt_contact_no"
+        android:layout_width="187dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Contact Number"
+        android:textAlignment="center"
+        android:textColor="#757575"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_btn_buyer_address" />
+
+
+    <TextView
+        android:id="@+id/txt_patment_method"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_sb"
+        android:text="Select Payment Method:"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_checkout" />
+
+    <RadioButton
+        android:id="@+id/radio_btn_buyer_address"
+        android:layout_width="187dp"
+        android:layout_height="40dp"
+        android:checked="true"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Buyer Address"
+        android:textAlignment="center"
+        android:theme="@style/Widget.AppCompat.Button.Colored"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_checkout" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_payment_method"
+        android:layout_width="311dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.700"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_patment_method"
+        app:layout_editor_absoluteY="345dp">
+
+        <RadioButton
+            android:id="@+id/radio_btn_card"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:checked="true"
+            android:fontFamily="@font/poppins_medium"
+            android:layoutDirection="rtl"
+            android:onClick="doTask2"
+            android:paddingLeft="30dip"
+            android:text="Debit Card / Credit Card"
+            android:textAlignment="textStart"
+            android:textColor="#000"
+            android:theme="@style/Widget.AppCompat.Button.Colored" />
+
+        <RadioButton
+
+            android:id="@+id/radio_btn_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:fontFamily="@font/poppins_medium"
+            android:layoutDirection="rtl"
+            android:onClick="doTask1"
+            android:paddingLeft="30dip"
+            android:text="Cash On Delivery"
+            android:textAlignment="textStart"
+            android:textColor="#000"
+            android:theme="@style/Widget.AppCompat.Button.Colored" />
+    </RadioGroup>
+
+    <ImageView
+
+        android:id="@+id/checkout_imgvw2"
+        android:layout_width="31dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/_0378"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_patment_method" />
+
+    <ImageView
+        android:id="@+id/checkout_imgvw1"
+        android:layout_width="31dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/get_money"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkout_imgvw2" />
+
+
+    <Button
+        android:id="@+id/btn_confirm_order"
+        android:layout_width="181dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#FF007CEB"
+        android:fontFamily="@font/segui_semibld"
+        android:text="Confirm Order"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup_payment_method"
+        app:layout_constraintVertical_bias="0.345" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Welcome"
+    android:background="@drawable/login">
+
+    <TextView
+        android:id="@+id/txt_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/segui_semibld"
+        android:text="Welcome!"
+        android:textColor="#ffff"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="67dp"
+        android:layout_height="52dp"
+        android:src="@drawable/bookhunt_icon_white_logo"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="136dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="236dp"
+        android:src="@drawable/hunt_downyour_favoritebooks"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.182"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_goneMarginBottom="30dp" />
+
+    <View
+        android:id="@+id/view_signin"
+        android:layout_width="391dp"
+        android:layout_height="207dp"
+        android:background="@drawable/bg_blue"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.998"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/btn_signin"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="46dp"
+        android:backgroundTint="#003E68"
+        android:fontFamily="@font/segui_semibld"
+        android:text="SIGN IN"
+        android:textColor="#ffff"
+        android:textSize="12sp"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_signin"
+        app:strokeColor="#ffff"
+        app:strokeWidth="1dp"
+
+
+        />
+
+    <Button
+        android:id="@+id/btn_create_acc"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#ffff"
+        android:fontFamily="@font/segui_semibld"
+        android:text="Creative account"
+        android:textColor="#003E68"
+        android:textSize="12sp"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_signin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signin"
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="#003E68"
+        app:strokeWidth="1dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
