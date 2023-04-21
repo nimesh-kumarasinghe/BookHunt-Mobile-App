@@ -12,9 +12,19 @@ import com.google.android.material.imageview.ShapeableImageView
   class BookAdapter(private val bookList : ArrayList<Books>) : RecyclerView.Adapter<BookAdapter.bookItemsViewHolder>() {
 
 
+      private lateinit var mListener: onItemClickListner
+
+      interface onItemClickListner {
+          fun onItemClick(position: Int)
+      }
+
+      fun setOnItemClickListener(listener: onItemClickListner) {
+          mListener = listener
+      }
+
       override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): bookItemsViewHolder {
           val itemView = LayoutInflater.from(parent.context).inflate(R.layout.book_list, parent, false)
-          return bookItemsViewHolder(itemView)
+          return bookItemsViewHolder(itemView, mListener)
       }
 
       override fun onBindViewHolder(holder: bookItemsViewHolder, position: Int) {
@@ -31,7 +41,7 @@ import com.google.android.material.imageview.ShapeableImageView
           return bookList.size
       }
 
-      class bookItemsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+      class bookItemsViewHolder(itemView: View, listener: BookAdapter.onItemClickListner) : RecyclerView.ViewHolder(itemView){
 
           val titleImg: ShapeableImageView = itemView.findViewById(R.id.img_titleimg)
           val bkname: TextView = itemView.findViewById(R.id.txt_bookname_txt)
@@ -43,6 +53,10 @@ import com.google.android.material.imageview.ShapeableImageView
 
 
           init {
+
+                  itemView.setOnClickListener {
+                      listener.onItemClick(adapterPosition)
+                  }
               // Set up the RatingBar
               rbar.numStars = 5
               rbar.stepSize = 0.5F

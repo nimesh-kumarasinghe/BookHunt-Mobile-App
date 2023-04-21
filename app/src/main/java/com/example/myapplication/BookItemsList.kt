@@ -47,6 +47,15 @@ class BookItemsList : AppCompatActivity() {
         adapter = BookAdapter(bookItemsArrayList)
         recyclerView.adapter = adapter
         //newArrayList = arrayListOf<Books>()
+
+        adapter.setOnItemClickListener(object : BookAdapter.onItemClickListner {
+            override fun onItemClick(position: Int) {
+                var myIntent = Intent(this@BookItemsList, BookItem::class.java)
+
+                startActivity(myIntent)
+            }
+
+        })
     }
 
     private fun dataInitialize() {
