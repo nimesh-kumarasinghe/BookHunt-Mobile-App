@@ -1,5 +1,19 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">My Application</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cat_name">Category</string>
+    <string name="book_name">Book Name</string>
+    <string name="qty">1</string>
+    <string name="author_name">Author Name</string>
+    <string name="book_price">500 LKR</string>
+    <string name="order_number">Order Number</string>
+    <string name="order_date">Order Date</string>
+    <string name="order_amount">Total Amount</string>
+    <string name="order_status">Status</string>
+    <string name="book_name_for_review">Book Name</string>
+    <string name="review_comment">Unbelievable value, next level storytelling. Abel to get Best knowledge related to Businesses.</string>
+    <fraction name="rating">4.0</fraction>
 
 
 </resources>

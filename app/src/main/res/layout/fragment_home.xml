@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="All Books"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/offer_recylerView" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="393dp"
+            android:layout_height="137dp"
+            android:src="@drawable/page_header"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="139dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/bookhunt_logo_white"
+            app:layout_constraintBottom_toTopOf="@+id/click_search"
+            app:layout_constraintStart_toStartOf="@+id/imageView10"
+            app:layout_constraintTop_toTopOf="@+id/imageView10"
+            app:layout_constraintVertical_bias="0.41" />
+
+        <EditText
+            android:id="@+id/click_search"
+            android:layout_width="256dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="76dp"
+            android:background="@drawable/custom_inputs"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:hint="Search Books, Authors and ISBN"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.193"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_round_search"
+            app:layout_constraintBottom_toBottomOf="@+id/click_search"
+            app:layout_constraintEnd_toEndOf="@+id/click_search"
+            app:layout_constraintHorizontal_bias="0.964"
+            app:layout_constraintStart_toStartOf="@+id/click_search"
+            app:layout_constraintTop_toTopOf="@+id/click_search"
+            app:layout_constraintVertical_bias="0.529" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:background="#00003E68"
+            android:scaleType="fitXY"
+            android:src="@drawable/location_find_img"
+            app:layout_constraintEnd_toEndOf="@+id/imageView10"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toEndOf="@+id/click_search"
+            app:layout_constraintTop_toTopOf="@+id/imageView10" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="69dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="4dp"
+            android:text="Find Nearest Store"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/click_search"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/offer_recylerView"
+            android:layout_width="367dp"
+            android:layout_height="133dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10"
+            tools:listitem="@layout/offers_list" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Shop Offers"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/offer_recylerView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/all_books_recylerView"
+            android:layout_width="369dp"
+            android:layout_height="384dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            tools:listitem="@layout/all_book_list" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
