@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FindNearestStore">
+
+    <ImageButton
+        android:id="@+id/btnn_back_button"
+        android:layout_width="40dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#fff"
+        android:src="@drawable/blue_arrow_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+
+        android:id="@+id/txt_find_near_book_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="100dp"
+        android:fontFamily="@font/segoe_ui_reg"
+        android:text="Find Nearest Book Store"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnn_back_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+
+        android:id="@+id/imageview3"
+        android:layout_width="285dp"
+        android:layout_height="277dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/find_nearest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_find_near_book_store" />
+
+    <TextView
+
+        android:id="@+id/txt_we_will"
+        android:layout_width="313dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/segoe_ui_reg"
+        android:text="We will take your current location and show
+nearest book stores where your searched book
+is avaialbe"
+        android:textAlignment="center"
+        android:textColor="#676870"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageview3" />
+
+    <TextView
+        android:id="@+id/txt_bookname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/segoe_ui_reg"
+        android:text="Book Name"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/edittxt_enter_your_book_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_we_will"
+        app:layout_constraintVertical_bias="0.826" />
+
+    <EditText
+        android:id="@+id/edittxt_enter_your_book_name"
+        android:layout_width="329dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/book_name_se"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Enter Your Book Name"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColorHint="#878787"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_we_will"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_proceed"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#FF007CEB"
+        android:background="@drawable/blue_btn"
+        android:fontFamily="@font/segui_semibld"
+        android:text="PROCEED"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittxt_enter_your_book_name"
+        app:layout_constraintVertical_bias="0.23" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
