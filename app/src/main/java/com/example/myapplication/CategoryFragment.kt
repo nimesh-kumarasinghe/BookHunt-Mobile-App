@@ -80,7 +80,7 @@ class CategoryFragment : Fragment() {
 
         adapter.setOnItemClickListener(object : CategoryAdapter.onItemClickListner {
             override fun onItemClick(position: Int) {
-                var myIntent = Intent(context, Testing::class.java)
+                var myIntent = Intent(context, BookItemsList::class.java)
 
                 startActivity(myIntent)
             }

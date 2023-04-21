@@ -13,7 +13,7 @@ class SplashScreen : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler().postDelayed({
-            var intent = Intent(this@SplashScreen   , HomeScreen::class.java)
+            var intent = Intent(this@SplashScreen   , Welcome::class.java)
             startActivity(intent)
             finish()
         }, 3000)

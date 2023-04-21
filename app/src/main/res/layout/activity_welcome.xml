@@ -90,7 +90,7 @@
         android:layout_marginTop="25dp"
         android:backgroundTint="#ffff"
         android:fontFamily="@font/segui_semibld"
-        android:text="Creative account"
+        android:text="Create Account"
         android:textColor="#003E68"
         android:textSize="12sp"
         app:cornerRadius="50dp"
@@ -101,6 +101,5 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_signin"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="#003E68"
-        app:strokeWidth="1dp"
-        />
+        app:strokeWidth="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

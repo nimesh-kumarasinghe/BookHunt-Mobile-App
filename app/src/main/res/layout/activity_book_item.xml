@@ -35,20 +35,8 @@
         app:layout_constraintStart_toEndOf="@+id/imgBtn_back_item"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/button_cart"
-        android:layout_width="81dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#fff"
-        android:src="@drawable/cart_basket"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
-        android:id="@+id/imgView15"
+        android:id="@+id/img_book_item_image"
         android:layout_width="291dp"
         android:layout_height="257dp"
         android:layout_marginTop="24dp"
@@ -105,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgView15"
+        app:layout_constraintTop_toBottomOf="@+id/img_book_item_image"
         app:layout_constraintVertical_bias="0.606" />
 
     <TextView
@@ -123,14 +111,24 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_category"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageView
+        android:id="@+id/transparency"
+        android:layout_width="58dp"
+        android:layout_height="13dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_author"
+        app:layout_constraintTop_toBottomOf="@+id/txt_author"
+        app:srcCompat="@drawable/custom_home_back" />
+
     <RatingBar
         android:id="@+id/ratingbar_item"
         android:layout_width="238dp"
         android:layout_height="50dp"
-        android:isIndicator="false"
+        android:isIndicator="true"
         android:numStars="5"
         android:progressTint="#EB9D00"
         android:rating="4"
+        android:clickable="false"
         android:scaleX="0.25"
         android:scaleY="0.25"
         android:secondaryProgressTint="#212121"
@@ -278,4 +276,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.937" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

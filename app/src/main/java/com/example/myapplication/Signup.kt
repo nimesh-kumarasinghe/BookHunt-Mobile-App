@@ -10,8 +10,9 @@ class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+        supportActionBar?.hide()
 
-        var txt_already_acc = findViewById<TextView>(R.id.btn_signup)
+        var txt_already_acc = findViewById<TextView>(R.id.txt_already_have_an_account)
 
         txt_already_acc.setOnClickListener()
         {
@@ -23,7 +24,7 @@ class Signup : AppCompatActivity() {
 
         btnc.setOnClickListener()
         {
-            var bb = Intent(this@Signup, SearchedBooks::class.java)
+            var bb = Intent(this@Signup, Signin::class.java)
             startActivity(bb)
         }
 

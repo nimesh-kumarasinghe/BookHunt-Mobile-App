@@ -1,15 +1,23 @@
 package com.example.myapplication
 
-//import android.annotation.SuppressLint
+
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
+import android.view.View.inflate
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class SearchedBooks : AppCompatActivity() {
+class BookItemsList : AppCompatActivity() {
+    private lateinit var adapter: BookAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var bookItemsArrayList: ArrayList<Books>
 
-    private lateinit var newRecylerview : RecyclerView
-    private lateinit var newArrayList: ArrayList<Books>
     lateinit var imgId : Array<Int>
     lateinit var bkname : Array<String>
     lateinit var author : Array<String>
@@ -17,24 +25,44 @@ class SearchedBooks : AppCompatActivity() {
     lateinit var rbar : Array<Float>
     lateinit var bookDescr : Array<String>
 
-
-    //@SuppressLint("WrongViewCast", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_searched_books)
+        setContentView(R.layout.activity_book_items_list)
 
+        supportActionBar?.hide()
+
+
+        var back = findViewById<ImageButton>(R.id.back_arrow_imgbtn)
+
+        back.setOnClickListener(){
+            onBackPressed()
+        }
+
+
+        dataInitialize()
+
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+        adapter = BookAdapter(bookItemsArrayList)
+        recyclerView.adapter = adapter
+        //newArrayList = arrayListOf<Books>()
+    }
+
+    private fun dataInitialize() {
+        bookItemsArrayList = arrayListOf<Books>()
         imgId = arrayOf(
             R.drawable.book1,
             R.drawable.book2,
             R.drawable.book3,
             R.drawable.book1,
         )
-     bkname = arrayOf(
-         "The Heart of Hell",
-         "Adrennes 1944",
-         "War on the Gothic Line",
-         "The Heart of Hell"
-     )
+        bkname = arrayOf(
+            "The Heart of Hell",
+            "Adrennes 1944",
+            "War on the Gothic Line",
+            "The Heart of Hell"
+        )
 
         author = arrayOf(
             "Mitch Weiss",
@@ -63,25 +91,9 @@ class SearchedBooks : AppCompatActivity() {
             "Through the eyes of thirteen men and women from seven different nations",
             "The untold story of courage and sacrifice in the shadow of Iwo Jima."
         )
-
-        newRecylerview = findViewById(R.id.recyclerView)
-        newRecylerview.layoutManager = LinearLayoutManager(this)
-        newRecylerview.setHasFixedSize(true)
-
-        newArrayList = arrayListOf<Books>()
-        getUserdata()
-
-    }
-
-    private fun getUserdata() {
         for (i in imgId.indices){
             val info = Books(imgId[i],bkname[i],author[i],price[i],rbar[i],bookDescr[i])
-            newArrayList.add(info)
+            bookItemsArrayList.add(info)
         }
-        newRecylerview.adapter = BookAdapter(newArrayList)
-
     }
-
-
-
 }

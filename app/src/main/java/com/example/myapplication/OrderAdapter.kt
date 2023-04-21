@@ -37,10 +37,10 @@ class OrderAdapter (private val orderList: ArrayList<Order>) : RecyclerView.Adap
 
     class OderViewHolder(itemView: View, listener: OrderAdapter.onItemClickListner) : RecyclerView.ViewHolder(itemView)
     {
-        val oderNo : TextView = itemView.findViewById(R.id.txt_cart_book_name)
-        val orderDate : TextView = itemView.findViewById(R.id.txt_cart_book_author)
-        val totalAmount : TextView = itemView.findViewById(R.id.txt_cart_book_price)
-        val status : TextView = itemView.findViewById(R.id.txt_order_status)
+        val oderNo : TextView = itemView.findViewById(R.id.txt_store_name)
+        val orderDate : TextView = itemView.findViewById(R.id.txt_store_address)
+        val totalAmount : TextView = itemView.findViewById(R.id.txt_store_telephone)
+        val status : TextView = itemView.findViewById(R.id.txt_store_email)
 
         init {
             itemView.setOnClickListener {

@@ -4,10 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat.getFloat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -64,6 +67,11 @@ class HomeFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        view.findViewById<ImageButton>(R.id.btn_nearest_store).setOnClickListener() {
+            var nearestShop = Intent(context, FindNearestStore::class.java)
+            startActivity(nearestShop)
+        }
+
         dataInitialize()
         setDataAllBook()
 
@@ -79,7 +87,7 @@ class HomeFragment : Fragment() {
 
         adapter.setOnItemClickListener(object : AllBookAdapter.onItemClickListner {
             override fun onItemClick(position: Int) {
-                var myIntent = Intent(context, Testing::class.java)
+                var myIntent = Intent(context, BookItem::class.java)
 
                 startActivity(myIntent)
             }

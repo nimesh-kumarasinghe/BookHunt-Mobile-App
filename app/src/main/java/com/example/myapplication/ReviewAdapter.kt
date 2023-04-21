@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -17,7 +18,7 @@ class ReviewAdapter (private val reviewList: ArrayList<Review>) : RecyclerView.A
         val currentItem = reviewList[position]
         holder.bookName.text = (currentItem.bookName)
         holder.comment.text = (currentItem.comment)
-        //holder.rating.rating = (currentItem.rating)
+        holder.rating.rating = (currentItem.rating)
     }
 
     override fun getItemCount(): Int {
@@ -26,8 +27,8 @@ class ReviewAdapter (private val reviewList: ArrayList<Review>) : RecyclerView.A
 
     class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val bookName : TextView = itemView.findViewById(R.id.txt_cart_book_name)
-        val comment : TextView = itemView.findViewById(R.id.txt_cart_book_author)
-        //val rating : RatingBar = itemView.findViewById(R.id.rating_display)
+        val bookName : TextView = itemView.findViewById(R.id.txt_store_name)
+        val comment : TextView = itemView.findViewById(R.id.txt_store_address)
+        val rating : RatingBar = itemView.findViewById(R.id.rating_display)
     }
 }

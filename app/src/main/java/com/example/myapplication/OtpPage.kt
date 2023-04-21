@@ -10,6 +10,7 @@ class OtpPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp_page)
+        supportActionBar?.hide()
 
         var btn_verfy= findViewById<Button>(R.id.btn_verify)
         var btn_img= findViewById<ImageButton>(R.id.btn_back_arr)
@@ -23,8 +24,7 @@ class OtpPage : AppCompatActivity() {
 
         btn_img.setOnClickListener()
         {
-            var back_btn_img = Intent(this@OtpPage, ForgotPassword::class.java)
-            startActivity(back_btn_img)
+            onBackPressed()
         }
     }
 }

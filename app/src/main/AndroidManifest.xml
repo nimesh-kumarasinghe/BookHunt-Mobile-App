@@ -14,8 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-
-         <activity
+        <activity
+            android:name=".Shop"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".BookItemsList"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".BookItem"
             android:exported="false">
             <meta-data
@@ -29,15 +42,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-       <activity
+        <activity
             android:name=".EditProfile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".SuccessfullPayment"
             android:exported="false">
@@ -52,7 +63,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".CheckoutMethod"
             android:exported="false">
@@ -69,13 +79,6 @@
         </activity>
         <activity
             android:name=".OrderDetails"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".SearchedBooks"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -125,6 +128,27 @@
         </activity>
         <activity
             android:name=".Signin"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".HomeScreen"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Testing"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Welcome"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

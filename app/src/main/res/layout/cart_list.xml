@@ -33,7 +33,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/txt_cart_book_name"
+                android:id="@+id/txt_store_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -46,26 +46,26 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txt_cart_book_price"
+                android:id="@+id/txt_store_telephone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:text="Price"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/txt_cart_book_author"
-                app:layout_constraintTop_toBottomOf="@+id/txt_cart_book_author" />
+                app:layout_constraintStart_toStartOf="@+id/txt_store_address"
+                app:layout_constraintTop_toBottomOf="@+id/txt_store_address" />
 
             <TextView
-                android:id="@+id/txt_cart_book_author"
+                android:id="@+id/txt_store_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:text="Author"
                 android:textColor="#000000"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/txt_cart_book_name"
-                app:layout_constraintTop_toBottomOf="@+id/txt_cart_book_name" />
+                app:layout_constraintStart_toStartOf="@+id/txt_store_name"
+                app:layout_constraintTop_toBottomOf="@+id/txt_store_name" />
 
             <Button
                 android:id="@+id/btn_cart_item_remove"
@@ -79,7 +79,7 @@
                 android:textColor="#434343"
                 android:textSize="10sp"
                 app:cornerRadius="50dp"
-                app:layout_constraintStart_toEndOf="@+id/txt_cart_book_name"
+                app:layout_constraintStart_toEndOf="@+id/txt_store_name"
                 app:layout_constraintTop_toTopOf="parent"
                 app:strokeColor="#434343"
                 app:strokeWidth="0.8dp" />
@@ -107,7 +107,7 @@
                 android:text="CheckBox"
                 android:textColorLink="#323232"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txt_cart_book_name"
+                app:layout_constraintEnd_toStartOf="@+id/txt_store_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -122,8 +122,8 @@
                 android:textColor="#000000"
                 android:textColorLink="#2C2C2C"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="@+id/txt_cart_book_price"
-                app:layout_constraintTop_toBottomOf="@+id/txt_cart_book_price" />
+                app:layout_constraintStart_toStartOf="@+id/txt_store_telephone"
+                app:layout_constraintTop_toBottomOf="@+id/txt_store_telephone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

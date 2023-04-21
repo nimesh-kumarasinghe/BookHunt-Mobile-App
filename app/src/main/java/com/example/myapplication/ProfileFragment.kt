@@ -1,7 +1,9 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.Rating
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -23,7 +26,7 @@ private lateinit var reviewArrayList: ArrayList<Review>
 
 lateinit var bookName : Array<String>
 lateinit var comment : Array<String>
-lateinit var rating : Array<Rating>
+lateinit var rating : Array<Float>
 
 /**
  * A simple [Fragment] subclass.
@@ -53,7 +56,7 @@ class ProfileFragment : Fragment() {
 
         view.findViewById<Button>(R.id.btn_edit_profile).setOnClickListener() {
             //Log.e("Data", "Edit Profile Button Clicked")
-            var edit_profile = Intent(context, Testing::class.java)
+            var edit_profile = Intent(context, EditProfile::class.java)
             startActivity(edit_profile)
         }
         return view
@@ -78,6 +81,7 @@ class ProfileFragment : Fragment() {
                 }
             }
     }
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataInitialize()
@@ -89,6 +93,8 @@ class ProfileFragment : Fragment() {
         recyclerView.adapter = adapter
 
     }
+    @RequiresApi(Build.VERSION_CODES.Q)
+    @SuppressLint("ResourceType")
     private fun dataInitialize() {
         reviewArrayList = arrayListOf<Review>()
 
@@ -110,8 +116,17 @@ class ProfileFragment : Fragment() {
             getString(R.string.review_comment)
         )
 
+        rating = arrayOf(
+            resources.getFloat(R.fraction.rating),
+            resources.getFloat(R.fraction.rating),
+            resources.getFloat(R.fraction.rating),
+            resources.getFloat(R.fraction.rating),
+            resources.getFloat(R.fraction.rating),
+            resources.getFloat(R.fraction.rating)
+        )
+
         for (i in bookName.indices) {
-            val review = Review(bookName[i], comment[i])
+            val review = Review(bookName[i], comment[i], rating[i])
             reviewArrayList.add(review)
         }
 

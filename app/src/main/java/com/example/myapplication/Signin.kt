@@ -15,6 +15,7 @@ class Signin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
+        supportActionBar?.hide()
 
         var txt_forgot_pwd = findViewById<TextView>(R.id.txt_forgot_pw)
         var txt_sign_up = findViewById<TextView>(R.id.txt_dont_have_anaccount)
@@ -37,7 +38,7 @@ class Signin : AppCompatActivity() {
 
         btn_b.setOnClickListener()
         {
-            var bynw = Intent(this@Signin, BookItem::class.java)
+            var bynw = Intent(this@Signin, HomeScreen::class.java)
             startActivity(bynw)
         }
 

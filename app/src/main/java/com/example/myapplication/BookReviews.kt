@@ -1,70 +1,80 @@
 package com.example.myapplication
 
 //import android.annotation.SuppressLint
+import android.annotation.SuppressLint
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class BookReviews : AppCompatActivity() {
 
-    private lateinit var NewRecylerview : RecyclerView
-    private lateinit var NewArrayList: ArrayList<Reviews>
-    lateinit var uname : Array<String>
-    lateinit var bktitle : Array<String>
-    lateinit var revieww : Array<String>
-    lateinit var revwbar : Array<Float>
+    private lateinit var adapter: ReviewAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var reviewArrayList: ArrayList<Review>
 
-    //@SuppressLint("MissingInflatedId")
+    lateinit var bookName : Array<String>
+    lateinit var comment : Array<String>
+    lateinit var rating : Array<Float>
+
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    @SuppressLint("ResourceType", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_reviews)
 
-
-        uname = arrayOf(
-            "Mitch Weiss",
-            "Antony Beevor",
-            "The Heart of Hell",
-            "Christian Jennings"
-        )
-
-        bktitle = arrayOf(
-            "The Heart of Hell",
-            "War on the Gothic Line",
-            "The Heart of Hell",
-            "The Heart of Hell"
-        )
-
-        revieww = arrayOf(
-            "Mitch Weiss",
-            "Antony Beevor",
-            "The Heart of Hell",
-            "Christian Jennings"
-        )
+        supportActionBar?.hide()
 
 
+        var back = findViewById<ImageButton>(R.id.imgBtn_back)
 
-        NewRecylerview = findViewById(R.id.recyclerViewReview)
-        NewRecylerview.layoutManager = LinearLayoutManager(this)
-        NewRecylerview.setHasFixedSize(true)
+        back.setOnClickListener() {
+            onBackPressed()
+        }
 
-        NewArrayList = arrayListOf<Reviews>()
-        getUserdata()
+        dataInitialize()
 
+        recyclerView = findViewById(R.id.recycler_view_reviews)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+        adapter = ReviewAdapter(reviewArrayList)
+        recyclerView.adapter = adapter
     }
 
-    private fun getUserdata() {
 
+    @RequiresApi(Build.VERSION_CODES.Q)
+    @SuppressLint("ResourceType")
+    private fun dataInitialize() {
+        reviewArrayList = arrayListOf<Review>()
+        bookName = arrayOf(
+            "Mitch Weiss",
+            "Antony Beevor",
+            "The Heart of Hell",
+            "Christian Jennings"
+        )
+        comment = arrayOf(
+            getString(R.string.review_comment),
+            getString(R.string.review_comment),
+            getString(R.string.review_comment),
+            getString(R.string.review_comment)
 
-        for (i in uname.indices){
-            val info = Reviews(uname[i],bktitle[i],revieww[i],revwbar[i])
-            NewArrayList.add(info)
+        )
+
+        rating = arrayOf(
+            resources.getFloat(R.fraction.rating),
+            resources.getFloat(R.fraction.rating),
+            resources.getFloat(R.fraction.rating),
+            resources.getFloat(R.fraction.rating)
+        )
+
+        for (i in bookName.indices){
+            val info = Review(bookName[i],comment[i],rating[i])
+            reviewArrayList.add(info)
         }
-        val adapter = ReviewAdapter(NewArrayList)
-        NewRecylerview.adapter = adapter
-
-
-
     }
 
 

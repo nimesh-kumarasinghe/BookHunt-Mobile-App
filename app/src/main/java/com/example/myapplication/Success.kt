@@ -9,13 +9,14 @@ class Success : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_success)
+        supportActionBar?.hide()
 
         var success_txtView= findViewById<TextView>(R.id.txt_continue)
 
 
         success_txtView.setOnClickListener()
         {
-            var succ_txtView = Intent(this@Success, FindNearestStore::class.java)
+            var succ_txtView = Intent(this@Success, Signin::class.java)
             startActivity(succ_txtView)
         }
 

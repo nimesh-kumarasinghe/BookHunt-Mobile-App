@@ -3,11 +3,9 @@ package com.example.myapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.imageview.ShapeableImageView
 
 class CartAdapter (private val cartList: ArrayList<Cart>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
@@ -35,9 +33,9 @@ class CartAdapter (private val cartList: ArrayList<Cart>) : RecyclerView.Adapter
     class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val cartBookImage : ImageView = itemView.findViewById(R.id.img_cart_book_image)
-        val catBookName : TextView = itemView.findViewById(R.id.txt_cart_book_name)
-        val cartBookAuthor : TextView = itemView.findViewById(R.id.txt_cart_book_author)
-        val cartBookPrice : TextView = itemView.findViewById(R.id.txt_cart_book_price)
+        val catBookName : TextView = itemView.findViewById(R.id.txt_store_name)
+        val cartBookAuthor : TextView = itemView.findViewById(R.id.txt_store_address)
+        val cartBookPrice : TextView = itemView.findViewById(R.id.txt_store_telephone)
         //val cartBookQty : EditText = itemView.findViewById(R.id.txt_qty)
 
     }

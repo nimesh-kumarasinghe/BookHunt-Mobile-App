@@ -4,19 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 
 class CheckoutPay : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout_pay)
 
-        var pay_btn= findViewById<Button>(R.id.btn_pay)
+        supportActionBar!!.hide()
+
+        var back= findViewById<ImageButton>(R.id.btn_back_back_btn)
 
 
-        pay_btn.setOnClickListener()
+        back.setOnClickListener()
         {
-            var intent_pay = Intent(this@CheckoutPay, SuccessfullPayment::class.java)
-            startActivity(intent_pay)
+            onBackPressed()
         }
     }
 }

@@ -73,6 +73,8 @@
         android:progressTint="#FF9800"
         android:rating="1"
         android:scaleX="0.3"
+        android:clickable="false"
+        android:isIndicator="true"
         android:scaleY="0.3"
         android:stepSize="1"
         android:transformPivotX="174dp"

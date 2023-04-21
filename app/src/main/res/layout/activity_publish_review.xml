@@ -72,12 +72,13 @@
 
     <RatingBar
         android:id="@+id/ratingbar1"
-        android:layout_width="248dp"
+        android:layout_width="242dp"
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
         android:max="5"
         android:progressTint="#EB9D00"
         android:rating="4"
+        android:stepSize="1"
         android:secondaryProgressTint="#212121"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,6 +132,7 @@
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="12sp"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
