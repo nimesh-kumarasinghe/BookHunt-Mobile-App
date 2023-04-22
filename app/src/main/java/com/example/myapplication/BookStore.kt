@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+
 data class BookStore(var storeImage : String,
                      var storeName : String,
                      var storeAddress : String,
