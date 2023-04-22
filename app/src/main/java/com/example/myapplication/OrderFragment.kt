@@ -81,7 +81,7 @@ class OrderFragment : Fragment() {
 
 
         val queue = Volley.newRequestQueue(requireContext())
-        val url = "https://api.icodingx.com/bookhunt/orders/" // add correct url
+        val url = "https://api.icodingx.com/bookhunt/orders/search?CustomerID=1"
 
         val jsonArrayRequest = JsonArrayRequest(
             Request.Method.GET, url,
@@ -109,7 +109,7 @@ class OrderFragment : Fragment() {
                 adapter.setOnItemClickListener(object : OrderAdapter.onItemClickListner {
                     override fun onItemClick(position: Int) {
                         var myIntent = Intent(context, OrderDetails::class.java)
-
+                        myIntent.putExtra("order_id", orderArrayList[position.toInt()].orderNumber)
                         startActivity(myIntent)
                     }
 
