@@ -52,89 +52,40 @@
 
     <TextView
 
-        android:id="@+id/txt_book_name"
-        android:layout_width="300dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/segui_semibld"
-        android:text="Book Name: The Heart of Hell"
-        android:textAlignment="textStart"
-        android:textColor="#212121"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view_order" />
-
-    <TextView
-
         android:id="@+id/txt_order_no"
         android:layout_width="300dp"
         android:layout_height="25dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="@font/segui_semibld"
         android:text="Order No: 0011 "
         android:textAlignment="textStart"
         android:textColor="#212121"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_book_name" />
+        app:layout_constraintTop_toTopOf="@+id/view_order" />
 
     <TextView
 
         android:id="@+id/txt_order_date"
         android:layout_width="300dp"
         android:layout_height="25dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/segui_semibld"
         android:text="Order Date: 2023-02-15"
         android:textAlignment="textStart"
         android:textColor="#212121"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_order_no" />
-
-    <TextView
-
-        android:id="@+id/order_details_txtView5"
-        android:layout_width="300dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/segui_semibld"
-        android:text="Status: Accepted"
-        android:textAlignment="textStart"
-        android:textColor="#212121"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_order_date" />
-
-    <TextView
-
-        android:id="@+id/txt_qty"
-        android:layout_width="300dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/segui_semibld"
-        android:text="QTY: 1"
-        android:textAlignment="textStart"
-        android:textColor="#212121"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_txtView5" />
 
     <TextView
         android:id="@+id/order_details_txtView7"
         android:layout_width="300dp"
         android:layout_height="25dp"
-        android:layout_marginTop="12dp"
         android:fontFamily="@font/segui_semibld"
         android:text="Total Amount: 500 LKR"
         android:textAlignment="textStart"
@@ -142,10 +93,26 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/view_order"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_qty"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/order_details_txtView5"
+        app:layout_constraintVertical_bias="0.12" />
+
+    <TextView
+
+        android:id="@+id/order_details_txtView5"
+        android:layout_width="300dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/segui_semibld"
+        android:text="Status: Accepted"
+        android:textAlignment="textStart"
+        android:textColor="#212121"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_order_date" />
 
     <Button
         android:id="@+id/btn_buy_now"
