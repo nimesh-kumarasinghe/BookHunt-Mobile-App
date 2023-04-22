@@ -45,14 +45,27 @@ class FindNearestStore : AppCompatActivity() {
 //            intent_btn.putExtra("user_lat", userlat)
 //            intent_btn.putExtra("user_long", userLog)
 //            startActivity(intent_btn)
-
-            getLocation() { res ->
-                val intent_btn = Intent(this@FindNearestStore, Shop::class.java)
-                intent_btn.putExtra("sh_keyword", book_name.text.toString())
-                intent_btn.putExtra("user_lat", res.getString("latitude"))
-                intent_btn.putExtra("user_long", res.getString("longitude"))
-                startActivity(intent_btn)
+            var validatex: Boolean = true
+            if (Validatetxt(book_name) == false) {
+                if (validatex == true) {
+                    validatex = false
+                    Toast.makeText(
+                        applicationContext, "Book Name Cannot Be Empty",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
+            if(validatex == true){
+                getLocation() { res ->
+                    val intent_btn = Intent(this@FindNearestStore, Shop::class.java)
+                    intent_btn.putExtra("sh_keyword", book_name.text.toString())
+                    intent_btn.putExtra("user_lat", res.getString("latitude"))
+                    intent_btn.putExtra("user_long", res.getString("longitude"))
+                    startActivity(intent_btn)
+                }
+            }
+
+
         }
 
     }
@@ -91,5 +104,13 @@ class FindNearestStore : AppCompatActivity() {
                     onSuccess(js_object)
                 }
         }
+    }
+    fun Validatetxt(textx: EditText): Boolean {
+
+        var res: Boolean = true
+        if (textx.text.length == 0) {
+            res = false
+        }
+        return res
     }
 }

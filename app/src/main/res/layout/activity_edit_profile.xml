@@ -152,48 +152,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText_pw"
-        android:layout_width="310dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/checkout_edt_txt"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Password"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:textColorHint="#5B5B5B"
-        android:textSize="15sp"
-        app:flow_wrapMode="chain"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittxt_email_txt"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/edittxt_email_txt"
-        android:layout_width="310dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/checkout_edt_txt"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Email"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:textColorHint="#5B5B5B"
-        android:textSize="15sp"
-        app:flow_wrapMode="chain"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_phone"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
         android:id="@+id/editText_phone"
         android:layout_width="310dp"
         android:layout_height="30dp"
@@ -269,8 +227,6 @@
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_pw"
-        app:layout_constraintVertical_bias="0.597" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
