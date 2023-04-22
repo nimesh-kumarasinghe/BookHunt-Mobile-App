@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.Volley
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,8 +23,8 @@ private lateinit var adapter: CategoryAdapter
 private lateinit var recyclerView: RecyclerView
 private lateinit var categoryArrayList: ArrayList<Category>
 
-lateinit var categoryImgId : Array<Int>
-lateinit var catName : Array<String>
+//lateinit var categoryImgId: Array<Int>
+//lateinit var catName: Array<String>
 
 /**
  * A simple [Fragment] subclass.
@@ -38,6 +42,8 @@ class CategoryFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        categoryArrayList = arrayListOf<Category>()
     }
 
     override fun onCreateView(
@@ -70,63 +76,89 @@ class CategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dataInitialize()
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView = view.findViewById(R.id.category_recyclerview)
-        recyclerView.layoutManager = GridLayoutManager(context, 2)
-        recyclerView.setHasFixedSize(true)
-        adapter=CategoryAdapter(categoryArrayList)
-        recyclerView.adapter = adapter
+        //dataInitialize()
 
-        adapter.setOnItemClickListener(object : CategoryAdapter.onItemClickListner {
-            override fun onItemClick(position: Int) {
-                var myIntent = Intent(context, BookItemsList::class.java)
+        val queue = Volley.newRequestQueue(requireContext())
+        val url = "https://api.icodingx.com/bookhunt/categories/"
 
-                startActivity(myIntent)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url,
+            null,
+            { response ->
+                //Success
+
+                for (x in 0 until response.length()) {
+                    val cate = response.getJSONObject(x)
+                    categoryArrayList.add(
+                        Category(
+                            cate.getString("Picture"),
+                            cate.getString("CategoryName")
+                        )
+                    )
+                }
+
+                val layoutManager = LinearLayoutManager(context)
+                recyclerView = view.findViewById(R.id.category_recyclerview)
+                recyclerView.layoutManager = GridLayoutManager(context, 2)
+                recyclerView.setHasFixedSize(true)
+                adapter = CategoryAdapter(categoryArrayList)
+                recyclerView.adapter = adapter
+
+                adapter.setOnItemClickListener(object : CategoryAdapter.onItemClickListner {
+                    override fun onItemClick(position: Int) {
+                        var myIntent = Intent(context, BookItemsList::class.java)
+
+                        startActivity(myIntent)
+                    }
+
+                })
+            },
+            { error ->
+                // Handle error
             }
-
-        })
+        )
+        queue.add(jsonArrayRequest)
 
 
     }
 
 
-    private fun dataInitialize() {
-        categoryArrayList = arrayListOf<Category>()
-
-        categoryImgId = arrayOf(
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage
-
-        )
-
-        catName = arrayOf(
-            getString(R.string.cat_name),
-
-            getString(R.string.cat_name),
-            getString(R.string.cat_name),
-            getString(R.string.cat_name),
-            getString(R.string.cat_name),
-            getString(R.string.cat_name),
-            getString(R.string.cat_name),
-            getString(R.string.cat_name),
-            getString(R.string.cat_name)
-
-
-        )
-
-
-        for (i in categoryImgId.indices) {
-            val category = Category(categoryImgId[i], catName[i])
-            categoryArrayList.add(category)
-        }
-
-
-    }
+//    private fun dataInitialize() {
+//        categoryArrayList = arrayListOf<Category>()
+//
+//        categoryImgId = arrayOf(
+//            R.drawable.sampleimage,
+//            R.drawable.sampleimage,
+//            R.drawable.sampleimage,
+//            R.drawable.sampleimage,
+//            R.drawable.sampleimage,
+//            R.drawable.sampleimage,
+//            R.drawable.sampleimage,
+//            R.drawable.sampleimage
+//
+//        )
+//
+//        catName = arrayOf(
+//            getString(R.string.cat_name),
+//
+//            getString(R.string.cat_name),
+//            getString(R.string.cat_name),
+//            getString(R.string.cat_name),
+//            getString(R.string.cat_name),
+//            getString(R.string.cat_name),
+//            getString(R.string.cat_name),
+//            getString(R.string.cat_name),
+//            getString(R.string.cat_name)
+//
+//
+//        )
+//
+//
+//        for (i in categoryImgId.indices) {
+//            val category = Category(categoryImgId[i], catName[i])
+//            categoryArrayList.add(category)
+//        }
+//
+//
+//    }
 }

@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.Volley
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,10 +22,10 @@ private lateinit var adapter: OrderAdapter
 private lateinit var recyclerView: RecyclerView
 private lateinit var orderArrayList: ArrayList<Order>
 
-lateinit var orderID : Array<String>
-lateinit var orderDate : Array<String>
-lateinit var orderTotalAmount : Array<String>
-lateinit var orderStatus : Array<String>
+//lateinit var orderID: Array<String>
+//lateinit var orderDate: Array<String>
+//lateinit var orderTotalAmount: Array<String>
+//lateinit var orderStatus: Array<String>
 
 
 /**
@@ -41,6 +44,8 @@ class OrderFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        orderArrayList = arrayListOf<Order>()
     }
 
     override fun onCreateView(
@@ -70,72 +75,52 @@ class OrderFragment : Fragment() {
                 }
             }
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dataInitialize()
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView = view.findViewById(R.id.order_recyler_view)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        adapter= OrderAdapter(orderArrayList)
-        recyclerView.adapter = adapter
 
-        adapter.setOnItemClickListener(object : OrderAdapter.onItemClickListner {
-            override fun onItemClick(position: Int) {
-                var myIntent = Intent(context, OrderDetails::class.java)
 
-                startActivity(myIntent)
+        val queue = Volley.newRequestQueue(requireContext())
+        val url = "https://api.icodingx.com/bookhunt/orders/" // add correct url
+
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url,
+            null,
+            { response ->
+                for (x in 0 until response.length()) {
+                    val order = response.getJSONObject(0)
+                    orderArrayList.add(
+                        Order(
+                            order.getString("OrderID"),
+                            order.getString("OrderDate"),
+                            order.getString("TotalAmount"),
+                            order.getString("OrderStatus")
+                        )
+                    )
+                }
+
+                val layoutManager = LinearLayoutManager(context)
+                recyclerView = view.findViewById(R.id.order_recyler_view)
+                recyclerView.layoutManager = layoutManager
+                recyclerView.setHasFixedSize(true)
+                adapter = OrderAdapter(orderArrayList)
+                recyclerView.adapter = adapter
+
+                adapter.setOnItemClickListener(object : OrderAdapter.onItemClickListner {
+                    override fun onItemClick(position: Int) {
+                        var myIntent = Intent(context, OrderDetails::class.java)
+
+                        startActivity(myIntent)
+                    }
+
+                })
+
+            },
+            { error ->
+                // Handle error
             }
-
-        })
-
-    }
-
-    private fun dataInitialize() {
-        orderArrayList = arrayListOf<Order>()
-
-        orderID = arrayOf(
-            getString(R.string.order_number),
-            getString(R.string.order_number),
-            getString(R.string.order_number),
-            getString(R.string.order_number),
-            getString(R.string.order_number),
-            getString(R.string.order_number)
         )
 
-        orderDate = arrayOf(
-            getString(R.string.order_date),
-            getString(R.string.order_date),
-            getString(R.string.order_date),
-            getString(R.string.order_date),
-            getString(R.string.order_date),
-            getString(R.string.order_date)
-        )
-
-        orderTotalAmount = arrayOf(
-            getString(R.string.order_amount),
-            getString(R.string.order_amount),
-            getString(R.string.order_amount),
-            getString(R.string.order_amount),
-            getString(R.string.order_amount),
-            getString(R.string.order_amount)
-        )
-
-        orderStatus = arrayOf(
-            getString(R.string.order_status),
-            getString(R.string.order_status),
-            getString(R.string.order_status),
-            getString(R.string.order_status),
-            getString(R.string.order_status),
-            getString(R.string.order_status)
-        )
-
-
-        for (i in orderID.indices) {
-            val order = Order(orderID[i], orderDate[i], orderTotalAmount[i], orderStatus[i] )
-            orderArrayList.add(order)
-        }
-
-
+        queue.add(jsonArrayRequest)
     }
 }
