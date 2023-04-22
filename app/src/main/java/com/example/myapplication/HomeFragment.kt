@@ -114,7 +114,7 @@ class HomeFragment : Fragment() {
                 //handel success
             },
             { error ->
-                // Handle error
+                Log.e("response", error.toString())
             }
         )
         queue.add(jsonArrayRequest)
@@ -169,7 +169,7 @@ class HomeFragment : Fragment() {
                 }
             },
             { error ->
-                // Handle error
+                Log.e("response", error.toString())
             }
         )
         queue.add(jsonArrayRequest)

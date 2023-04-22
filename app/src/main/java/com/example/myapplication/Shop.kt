@@ -25,6 +25,7 @@ class Shop : AppCompatActivity() {
     lateinit var storeAddress: String
     lateinit var storeTelephone: String
     lateinit var storeEmail: String
+    lateinit var storeDistance : String
 
     lateinit var user_lat: String
     lateinit var user_long: String
@@ -82,17 +83,19 @@ class Shop : AppCompatActivity() {
             getSellerData(dt_x.getString("seller").toInt()) { res ->
                 storeImage = res.getString("ProfilePicture")
                 storeName = res.getString("ShopName")
-                storeAddress =
+                storeAddress ="Address: "+
                     res.getString("AddressNo") + res.getString("Street") + res.getString("City")
-                storeTelephone = res.getString("PhoneNo")
-                storeEmail = res.getString("Email")
+                storeTelephone = "Telephone: "+res.getString("PhoneNo")
+                storeEmail = "Email: "+res.getString("Email")
+                storeDistance ="Distance: "+dt_x.getString("km")
 
                 val dt = BookStore(
                     storeImage,
                     storeName,
                     storeAddress,
                     storeTelephone,
-                    storeEmail
+                    storeEmail,
+                    storeDistance
                 )
                 storeArrayList.add(dt)
                 //Log.e("xxx",store_x.toString())
