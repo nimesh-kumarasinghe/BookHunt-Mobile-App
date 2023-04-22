@@ -83,7 +83,7 @@ class Shop : AppCompatActivity() {
             getSellerData(dt_x.getString("seller").toInt()) { res ->
                 storeImage = res.getString("ProfilePicture")
                 storeName = res.getString("ShopName")
-                storeAddress ="Address: "+
+                storeAddress =
                     res.getString("AddressNo") + res.getString("Street") + res.getString("City")
                 storeTelephone = "Telephone: "+res.getString("PhoneNo")
                 storeEmail = "Email: "+res.getString("Email")

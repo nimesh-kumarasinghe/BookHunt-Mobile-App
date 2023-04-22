@@ -100,7 +100,7 @@ class BookItem : AppCompatActivity() {
             "https://api.icodingx.com/bookhunt/categories/${id}",
             null,
             { response ->
-                txt_book_category.setText(response.getString("CategoryName")) //SET TITLES IF NEEDED
+                txt_book_category.setText("Category: "+response.getString("CategoryName")) //SET TITLES IF NEEDED
             },
             { error ->
                 // Handle errors here
@@ -119,10 +119,10 @@ class BookItem : AppCompatActivity() {
             { response ->
                 Log.e("X", response.toString())
                 txt_book_name.setText(response.getString("Title"))  //SET TITLES IF NEEDED
-                txt_book_author.setText(response.getString("Author"))
-                txt_book_price.setText(response.getString("Price"))
-                txt_book_pub_date.setText(response.getString("PublicationDate"))
-                txt_book_isbn.setText(response.getString("ISBN"))
+                txt_book_author.setText("By "+response.getString("Author"))
+                txt_book_price.setText(response.getString("Price")+"LKR")
+                txt_book_pub_date.setText("Publication date: "+response.getString("PublicationDate"))
+                txt_book_isbn.setText("ISBN: "+response.getString("ISBN"))
                 txt_book_desc.setText(response.getString("BDescription"))
                 getCateName(response.getString("category_id"))
 

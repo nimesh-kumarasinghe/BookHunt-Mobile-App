@@ -99,22 +99,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/btn_cart_item_remove"
-                android:layout_width="66dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="128dp"
-                android:layout_marginTop="4dp"
-                android:backgroundTint="#FFFFFF"
-                android:text="Remove"
-                android:textColor="#434343"
-                android:textSize="7sp"
-                app:cornerRadius="50dp"
-                app:layout_constraintStart_toEndOf="@+id/txt_store_name"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="#434343"
-                app:strokeWidth="0.8dp" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
