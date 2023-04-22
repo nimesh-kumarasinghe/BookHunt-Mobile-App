@@ -1,3 +1,3 @@
 package com.example.myapplication
 
-data class HomeOffer(var offerImage : Int)
+data class HomeOffer(var offerImage : String)
