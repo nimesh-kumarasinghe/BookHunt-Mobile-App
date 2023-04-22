@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -16,6 +17,12 @@ import androidx.core.content.res.ResourcesCompat.getFloat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONArray
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,17 +36,6 @@ private lateinit var homeBookArrayList: ArrayList<HomeBook>
 private lateinit var adapterOffer: HomeOfferAdapter
 private lateinit var recyclerViewOffer: RecyclerView
 private lateinit var offerArrayList: ArrayList<HomeOffer>
-
-
-lateinit var offerImage : Array<Int>
-
-
-lateinit var homeBookImage : Array<Int>
-lateinit var homeBookName : Array<String>
-lateinit var homeBookAuthor : Array<String>
-lateinit var homeBookPrice : Array<String>
-lateinit var homeBookRating : Array<Float>
-
 
 
 /**
@@ -61,9 +57,11 @@ class HomeFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_home, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -72,44 +70,8 @@ class HomeFragment : Fragment() {
             startActivity(nearestShop)
         }
 
-        dataInitialize()
-        setDataAllBook()
-
-        //*****For Shop Offers Recycler View
-
-        //val layoutManager = LinearLayoutManager(context)
-        recyclerView = view.findViewById(R.id.all_books_recylerView)
-        recyclerView.layoutManager = GridLayoutManager(context, 3)
-        //recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-        recyclerView.setHasFixedSize(true)
-        adapter= AllBookAdapter(homeBookArrayList)
-        recyclerView.adapter = adapter
-
-        adapter.setOnItemClickListener(object : AllBookAdapter.onItemClickListner {
-            override fun onItemClick(position: Int) {
-                var myIntent = Intent(context, BookItem::class.java)
-
-                startActivity(myIntent)
-            }
-
-        })
-
-
-        //val layoutManager = LinearLayoutManager(context)
-        recyclerViewOffer = view.findViewById(R.id.offer_recylerView)
-        recyclerViewOffer.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-        recyclerViewOffer.setHasFixedSize(true)
-        adapterOffer= HomeOfferAdapter(offerArrayList)
-        recyclerViewOffer.adapter = adapterOffer
-
-
-        //*****For AllBook Recycler View
-
-        /*recyclerViewAllBook = view.findViewById(R.id.all_books_recylerView)
-        recyclerViewAllBook.layoutManager = GridLayoutManager(context, 2)
-        recyclerViewAllBook.setHasFixedSize(true)
-        adapterAllBook = AllBookAdapter(homeBookArrayList)
-        recyclerViewAllBook.adapter = adapterAllBook*/
+        homeBookArrayList = arrayListOf<HomeBook>()
+        offerArrayList = arrayListOf<HomeOffer>()
 
         return view
     }
@@ -134,100 +96,83 @@ class HomeFragment : Fragment() {
             }
     }
 
-
-
-    //@RequiresApi(Build.VERSION_CODES.Q)
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }*/
-
-    //@SuppressLint("ResourceType")
-    //@RequiresApi(Build.VERSION_CODES.Q)
-    @SuppressLint("ResourceType")
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun setDataAllBook() {
-        homeBookArrayList = arrayListOf<HomeBook>()
-
-        homeBookImage = arrayOf(
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage,
-            R.drawable.sampleimage
+    fun setAdData(onSuccess: (x: Int) -> Unit) {
+        val queue = Volley.newRequestQueue(requireContext())
+        val url = "https://api.icodingx.com/bookhunt/advertisements/"
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url,
+            null,
+            { response ->
+                for (x in 0 until response.length()) {
+                    val ad = response.getJSONObject(x)
+                    offerArrayList.add(
+                        HomeOffer(
+                            ad.getString("PosterUrl")
+                        )
+                    )
+                }
+                onSuccess(1)
+                //handel success
+            },
+            { error ->
+                // Handle error
+            }
         )
-        homeBookName = arrayOf(
-            getString(R.string.book_name),
-            getString(R.string.book_name),
-            getString(R.string.book_name),
-            getString(R.string.book_name),
-            getString(R.string.book_name),
-            getString(R.string.book_name),
-            getString(R.string.book_name),
-            getString(R.string.book_name)
-        )
-        homeBookAuthor = arrayOf(
-            getString(R.string.author_name),
-            getString(R.string.author_name),
-            getString(R.string.author_name),
-            getString(R.string.author_name),
-            getString(R.string.author_name),
-            getString(R.string.author_name),
-            getString(R.string.author_name),
-            getString(R.string.author_name)
-        )
-        homeBookPrice = arrayOf(
-            getString(R.string.book_price),
-            getString(R.string.book_price),
-            getString(R.string.book_price),
-            getString(R.string.book_price),
-            getString(R.string.book_price),
-            getString(R.string.book_price),
-            getString(R.string.book_price),
-            getString(R.string.book_price)
-        )
-        homeBookRating = arrayOf(
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating)
-        )
-        for (i in homeBookImage.indices) {
-            val allBook = HomeBook(homeBookImage[i], homeBookName[i],homeBookAuthor[i],homeBookPrice[i] ,homeBookRating[i])
-            homeBookArrayList.add(allBook)
-        }
-
+        queue.add(jsonArrayRequest)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        val queue = Volley.newRequestQueue(requireContext())
+        val url = "https://api.icodingx.com/bookhunt/books/"
 
-    private fun dataInitialize() {
-        offerArrayList = arrayListOf<HomeOffer>()
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url,
+            null,
+            { response ->
+                for (x in 0 until response.length()) {
+                    val book = response.getJSONObject(x)
+                    homeBookArrayList.add(
+                        HomeBook(
+                            book.getString("BookID"),
+                            book.getString("imgLocation"),
+                            book.getString("Title"),
+                            book.getString("Author"),
+                            book.getString("Price"),
+                            "1.0".toFloat()
+                        )
+                    )
+                }
 
-        offerImage = arrayOf(
-            R.drawable.ads,
-            R.drawable.ads,
-            R.drawable.ads,
-            R.drawable.ads,
-            R.drawable.ads,
-            R.drawable.ads,
-            R.drawable.ads,
-            R.drawable.ads
+                setAdData() { r ->
 
+//                    Log.e("xx", homeBookArrayList.toString())
+                    recyclerView = view.findViewById(R.id.all_books_recylerView)
+                    recyclerView.layoutManager = GridLayoutManager(context, 3)
+                    recyclerView.setHasFixedSize(true)
+                    adapter = AllBookAdapter(homeBookArrayList)
+                    recyclerView.adapter = adapter
+
+                    adapter.setOnItemClickListener(object : AllBookAdapter.onItemClickListner {
+                        override fun onItemClick(position: Int) {
+                            var myIntent = Intent(context, BookItem::class.java)
+                            myIntent.putExtra("book_id",homeBookArrayList[position.toInt()].book_id)
+                            startActivity(myIntent)
+                        }
+                    })
+
+                    recyclerViewOffer = view.findViewById(R.id.offer_recylerView)
+                    recyclerViewOffer.layoutManager =
+                        LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    recyclerViewOffer.setHasFixedSize(true)
+                    adapterOffer = HomeOfferAdapter(offerArrayList)
+                    recyclerViewOffer.adapter = adapterOffer
+                }
+            },
+            { error ->
+                // Handle error
+            }
         )
-        for (i in offerImage.indices) {
-            val offer = HomeOffer(offerImage[i])
-            offerArrayList.add(offer)
-        }
-
+        queue.add(jsonArrayRequest)
 
     }
 }

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
 class BookStoreAdapter (private val storeList : ArrayList<BookStore>) : RecyclerView.Adapter<BookStoreAdapter.storeViewHolder>() {
@@ -19,7 +20,11 @@ class BookStoreAdapter (private val storeList : ArrayList<BookStore>) : Recycler
 
     override fun onBindViewHolder(holder: storeViewHolder, position: Int) {
         val currentItem = storeList[position]
-        holder.storeImage.setImageResource(currentItem.storeImage)
+
+//        holder.storeImage.setImageResource(R.drawable.user_image)
+        Glide.with(holder.storeImage)
+            .load(currentItem.storeImage)
+            .into(holder.storeImage);
         holder.storeName.text = currentItem.storeName
         holder.storeAddress.text = currentItem.storeAddress
         holder.storeTelephone.text = currentItem.storeTelephone

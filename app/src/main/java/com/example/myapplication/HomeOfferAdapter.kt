@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
 class HomeOfferAdapter (private val offerList: ArrayList<HomeOffer>) : RecyclerView.Adapter<HomeOfferAdapter.OfferViewHolder>(){
@@ -17,7 +18,11 @@ class HomeOfferAdapter (private val offerList: ArrayList<HomeOffer>) : RecyclerV
 
     override fun onBindViewHolder(holder: OfferViewHolder, position: Int) {
         val currentItem = offerList[position]
-        holder.offerImage.setImageResource(currentItem.offerImage)
+//        holder.offerImage.setImageResource(currentItem.offerImage)
+
+        Glide.with(holder.offerImage)
+            .load(currentItem.offerImage)
+            .into(holder.offerImage);
     }
 
     override fun getItemCount(): Int {
