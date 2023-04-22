@@ -20,7 +20,7 @@ class Signup : AppCompatActivity() {
         var txt_last_name = findViewById<EditText>(R.id.edttxt_lname)
         var address_no = findViewById<EditText>(R.id.edttxt_address)
         var city = findViewById<EditText>(R.id.edttxt_city)
-        var street = findViewById<EditText>(R.id.signup_editTxt5)
+        var street = findViewById<EditText>(R.id.edit_street)
         var postal_code = findViewById<EditText>(R.id.edttxt_postal_code)
         var number = findViewById<EditText>(R.id.edttxt_phoneno)
         var email = findViewById<EditText>(R.id.edttxt_email)
