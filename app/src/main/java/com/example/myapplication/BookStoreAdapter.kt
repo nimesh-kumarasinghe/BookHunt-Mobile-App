@@ -29,7 +29,7 @@ class BookStoreAdapter (private val storeList : ArrayList<BookStore>) : Recycler
         holder.storeAddress.text = currentItem.storeAddress
         holder.storeTelephone.text = currentItem.storeTelephone
         holder.storeEmail.text = currentItem.storeEmail
-        //holder.storeDistance.text =currentItem.storeDistance
+        holder.storeDistance.text =currentItem.storeDistance
 
     }
 
@@ -44,7 +44,7 @@ class BookStoreAdapter (private val storeList : ArrayList<BookStore>) : Recycler
         val storeAddress: TextView = itemView.findViewById(R.id.txt_store_address)
         val storeTelephone: TextView = itemView.findViewById(R.id.txt_store_telephone)
         val storeEmail: TextView = itemView.findViewById(R.id.txt_store_email)
-        //val storeDistance: TextView = itemView.findViewById(R.id.txt_distance)
+        val storeDistance: TextView = itemView.findViewById(R.id.txt_distance)
 
     }
 }
