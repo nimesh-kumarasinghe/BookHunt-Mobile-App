@@ -91,6 +91,7 @@ class CategoryFragment : Fragment() {
                     val cate = response.getJSONObject(x)
                     categoryArrayList.add(
                         Category(
+                            cate.getString("CategoryID"),
                             cate.getString("Picture"),
                             cate.getString("CategoryName")
                         )
@@ -107,7 +108,7 @@ class CategoryFragment : Fragment() {
                 adapter.setOnItemClickListener(object : CategoryAdapter.onItemClickListner {
                     override fun onItemClick(position: Int) {
                         var myIntent = Intent(context, BookItemsList::class.java)
-
+                        myIntent.putExtra("cate_id", categoryArrayList[position.toInt()].cateid)
                         startActivity(myIntent)
                     }
 
