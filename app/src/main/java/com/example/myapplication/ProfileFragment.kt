@@ -12,9 +12,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +53,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +62,30 @@ class ProfileFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_profile, container, false)
         val view: View = inflater!!.inflate(R.layout.fragment_profile, container, false)
 
+        val sharedPref = requireActivity().getSharedPreferences("customer_data_sv", MODE_PRIVATE)
+        val isLogin = sharedPref.getBoolean("isLogin", false)
+        val customer_id = sharedPref.getString("logged", null)
+
+        val queue = Volley.newRequestQueue(requireContext())
+        val url = "https://api.icodingx.com/bookhunt/customers/${customer_id}"
+
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url,
+            null,
+            { response ->
+                //success
+                view.findViewById<TextView>(R.id.txt_user_name).text =
+                    response.getString("FirstName")
+                view.findViewById<TextView>(R.id.txt_user_location).text =
+                    response.getString("AddressNo")+", " + response.getString("Street")+", " + response.getString(
+                        "City"
+                    )
+            },
+            { error ->
+                Log.e("response", error.toString())
+            }
+        )
+        queue.add(jsonObjectRequest)
 
         /*view.findViewById<Button>(R.id.btn_edit_profile).setOnClickListener() {
             //Log.e("Data", "Edit Profile Button Clicked")
@@ -114,42 +145,42 @@ class ProfileFragment : Fragment() {
     }
 
 //    @RequiresApi(Build.VERSION_CODES.Q)
- //   @SuppressLint("ResourceType")
- /*   private fun dataInitialize() {
-        reviewArrayList = arrayListOf<Review>()
+    //   @SuppressLint("ResourceType")
+    /*   private fun dataInitialize() {
+           reviewArrayList = arrayListOf<Review>()
 
-        bookName = arrayOf(
-            getString(R.string.book_name_for_review),
-            getString(R.string.book_name_for_review),
-            getString(R.string.book_name_for_review),
-            getString(R.string.book_name_for_review),
-            getString(R.string.book_name_for_review),
-            getString(R.string.book_name_for_review)
-        )
+           bookName = arrayOf(
+               getString(R.string.book_name_for_review),
+               getString(R.string.book_name_for_review),
+               getString(R.string.book_name_for_review),
+               getString(R.string.book_name_for_review),
+               getString(R.string.book_name_for_review),
+               getString(R.string.book_name_for_review)
+           )
 
-        comment = arrayOf(
-            getString(R.string.review_comment),
-            getString(R.string.review_comment),
-            getString(R.string.review_comment),
-            getString(R.string.review_comment),
-            getString(R.string.review_comment),
-            getString(R.string.review_comment)
-        )
+           comment = arrayOf(
+               getString(R.string.review_comment),
+               getString(R.string.review_comment),
+               getString(R.string.review_comment),
+               getString(R.string.review_comment),
+               getString(R.string.review_comment),
+               getString(R.string.review_comment)
+           )
 
-        rating = arrayOf(
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating)
-        )
+           rating = arrayOf(
+               resources.getFloat(R.fraction.rating),
+               resources.getFloat(R.fraction.rating),
+               resources.getFloat(R.fraction.rating),
+               resources.getFloat(R.fraction.rating),
+               resources.getFloat(R.fraction.rating),
+               resources.getFloat(R.fraction.rating)
+           )
 
-        for (i in bookName.indices) {
-            val review = Review(bookName[i], comment[i], rating[i])
-            reviewArrayList.add(review)
-        }
+           for (i in bookName.indices) {
+               val review = Review(bookName[i], comment[i], rating[i])
+               reviewArrayList.add(review)
+           }
 
 
-    }*/
+       }*/
 }
