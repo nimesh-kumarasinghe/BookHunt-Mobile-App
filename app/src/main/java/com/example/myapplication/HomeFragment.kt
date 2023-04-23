@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat.getFloat
@@ -56,6 +57,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,6 +66,51 @@ class HomeFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+//        val txt_sh_keyword = view.findViewById<EditText>(R.id.txt_sh_keyword)
+//        view.findViewById<Button>(R.id.btn_search)
+        view.findViewById<ImageButton>(R.id.btn_search).setOnClickListener(){
+            val queue = Volley.newRequestQueue(requireContext())
+            val url = "https://api.icodingx.com/bookhunt/books/search?keyword=${view.findViewById<EditText>(R.id.txt_sh_keyword).text}"
+            homeBookArrayList.clear()
+            val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url,
+                null,
+                { response ->
+                    for (x in 0 until response.length()) {
+                        val book = response.getJSONObject(x)
+                        homeBookArrayList.add(
+                            HomeBook(
+                                book.getString("BookID"),
+                                book.getString("imgLocation"),
+                                book.getString("Title"),
+                                book.getString("Author"),
+                                book.getString("Price"),
+                                "1.0".toFloat()
+                            )
+                        )
+                    }
+                    recyclerView.adapter = adapter
+                    adapter = AllBookAdapter(homeBookArrayList)
+                    adapter.notifyDataSetChanged()
+
+
+                    adapter.setOnItemClickListener(object : AllBookAdapter.onItemClickListner {
+                        override fun onItemClick(position: Int) {
+                            var myIntent = Intent(context, BookItem::class.java)
+                            myIntent.putExtra("book_id",homeBookArrayList[position.toInt()].book_id)
+                            startActivity(myIntent)
+                        }
+                    })
+
+                },
+                { error ->
+                    Log.e("response", error.toString())
+                }
+            )
+            queue.add(jsonArrayRequest)
+        }
+
+        //btn_sh.setOnClickListener(){}
 
         view.findViewById<ImageButton>(R.id.btn_nearest_store).setOnClickListener() {
             var nearestShop = Intent(context, FindNearestStore::class.java)

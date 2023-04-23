@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
   class BookAdapter(private val bookList : ArrayList<Books>) : RecyclerView.Adapter<BookAdapter.bookItemsViewHolder>() {
@@ -29,7 +30,10 @@ import com.google.android.material.imageview.ShapeableImageView
 
       override fun onBindViewHolder(holder: bookItemsViewHolder, position: Int) {
           val currentItem = bookList[position]
-          holder.titleImg.setImageResource(currentItem.titleImage)
+//          holder.titleImg.setImageResource(currentItem.titleImage)
+          Glide.with(holder.titleImg)
+              .load(currentItem.titleImage)
+              .into(holder.titleImg);
           holder.bkname.text = currentItem.bookName
           holder.author.text = currentItem.authorName
           holder.price.text = currentItem.bookPrice

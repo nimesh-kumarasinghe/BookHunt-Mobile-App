@@ -1,7 +1,8 @@
 package com.example.myapplication
 
 data class Books(
-    var titleImage: Int,
+    var book_id: String,
+    var titleImage: String,
     var bookName: String,
     var authorName: String,
     var bookPrice: String,

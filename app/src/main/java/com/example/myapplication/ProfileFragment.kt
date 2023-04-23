@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.media.Rating
 import android.os.Build
@@ -24,9 +25,9 @@ private lateinit var adapter: ReviewAdapter
 private lateinit var recyclerView: RecyclerView
 private lateinit var reviewArrayList: ArrayList<Review>
 
-lateinit var bookName : Array<String>
-lateinit var comment : Array<String>
-lateinit var rating : Array<Float>
+lateinit var bookName: Array<String>
+lateinit var comment: Array<String>
+lateinit var rating: Array<Float>
 
 /**
  * A simple [Fragment] subclass.
@@ -54,10 +55,27 @@ class ProfileFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_profile, container, false)
         val view: View = inflater!!.inflate(R.layout.fragment_profile, container, false)
 
+
         view.findViewById<Button>(R.id.btn_edit_profile).setOnClickListener() {
             //Log.e("Data", "Edit Profile Button Clicked")
             var edit_profile = Intent(context, EditProfile::class.java)
             startActivity(edit_profile)
+        }
+
+        view.findViewById<Button>(R.id.btn_signout_x).setOnClickListener() {
+            val sharedPref =
+                requireActivity().getSharedPreferences("customer_data_sv", MODE_PRIVATE)
+            val editor = sharedPref.edit()
+
+            editor.remove("isLogin")
+            editor.remove("logged")
+
+            editor.apply()
+
+
+            val alreadyAccIntent = Intent(requireActivity(), Signin::class.java)
+            startActivity(alreadyAccIntent)
+
         }
         return view
     }
@@ -81,6 +99,7 @@ class ProfileFragment : Fragment() {
                 }
             }
     }
+
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -89,10 +108,11 @@ class ProfileFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyler_view_review_user_profile)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter= ReviewAdapter(reviewArrayList)
+        adapter = ReviewAdapter(reviewArrayList)
         recyclerView.adapter = adapter
 
     }
+
     @RequiresApi(Build.VERSION_CODES.Q)
     @SuppressLint("ResourceType")
     private fun dataInitialize() {
