@@ -14,27 +14,38 @@ class OtpPage : AppCompatActivity() {
         setContentView(R.layout.activity_otp_page)
         supportActionBar?.hide()
 
-        var btn_verfy= findViewById<Button>(R.id.btn_verify)
-        var btn_img= findViewById<ImageButton>(R.id.btn_back_arr)
+        var intentx = intent
+        var customer_id = intentx.getStringExtra("customer_id")
+        var code = intentx.getStringExtra("code")
+
+        var btn_verfy = findViewById<Button>(R.id.btn_verify)
+        var btn_img = findViewById<ImageButton>(R.id.btn_back_arr)
         var OTP = findViewById<EditText>(R.id.edittxt_enterOTP)
 
 
         btn_verfy.setOnClickListener()
         {
-            var otp_verify = Intent(this@OtpPage, ResetPassword::class.java)
-            startActivity(otp_verify)
 
-            var validatex: Boolean = true
-
-            if (Validatetxt(OTP) == false) {
-                if (validatex == true) {
-                    validatex = false
-                    Toast.makeText(
-                        applicationContext, "OTP Empty",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+            if (code.toString() == OTP.text.toString()) {
+                var otp_verify = Intent(this@OtpPage, ResetPassword::class.java)
+                otp_verify.putExtra("customer_id", customer_id)
+                startActivity(otp_verify)
+            } else {
+                //invalid code
             }
+
+
+//            var validatex: Boolean = true
+//
+//            if (Validatetxt(OTP) == false) {
+//                if (validatex == true) {
+//                    validatex = false
+//                    Toast.makeText(
+//                        applicationContext, "OTP Empty",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
 
         }
 
@@ -43,6 +54,7 @@ class OtpPage : AppCompatActivity() {
             onBackPressed()
         }
     }
+
     fun Validatetxt(textx: EditText): Boolean {
 
         var res: Boolean = true

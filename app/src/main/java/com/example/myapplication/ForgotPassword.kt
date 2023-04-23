@@ -7,6 +7,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 
 class ForgotPassword : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +17,7 @@ class ForgotPassword : AppCompatActivity() {
         setContentView(R.layout.activity_forgot_password)
         supportActionBar?.hide()
 
-        var btn_send_otp= findViewById<Button>(R.id.btn_sendOtp)
+        var btn_send_otp = findViewById<Button>(R.id.btn_sendOtp)
 
         var btn_back = findViewById<ImageButton>(R.id.btn_bback_arrow)
 
@@ -27,33 +30,59 @@ class ForgotPassword : AppCompatActivity() {
 
         btn_send_otp.setOnClickListener()
         {
-            var send_otp = Intent(this@ForgotPassword, OtpPage::class.java)
-            startActivity(send_otp)
 
-            var validatex: Boolean = true
 
-            if (Validatetxt(forgotpasswordEmail) == false) {
-                if (validatex == true) {
-                    validatex = false
-                    Toast.makeText(
-                        applicationContext, "Email Cannot Be Empty",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-            if (emailValidate(forgotpasswordEmail) == false) {
-                if (validatex == true) {
-                    validatex = false
-                    Toast.makeText(
-                        applicationContext, "Invalid email address",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+//            var validatex: Boolean = true
+//
+//            if (Validatetxt(forgotpasswordEmail) == false) {
+//                if (validatex == true) {
+//                    validatex = false
+//                    Toast.makeText(
+//                        applicationContext, "Email Cannot Be Empty",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//            if (emailValidate(forgotpasswordEmail) == false) {
+//                if (validatex == true) {
+//                    validatex = false
+//                    Toast.makeText(
+//                        applicationContext, "Invalid email address",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+            val queue = Volley.newRequestQueue(this.applicationContext)
+
+
+            val jsonObjectRequest = JsonObjectRequest(
+                Request.Method.GET,
+                "https://api.icodingx.com/bookhunt/customers/forgot-password?Email=${forgotpasswordEmail.text}",
+                null,
+                { response ->
+                    //success
+                    if (response.getString("Status") == "True") {
+
+                        var send_otp = Intent(this@ForgotPassword, OtpPage::class.java)
+                        send_otp.putExtra("customer_id", response.getString("SellerID"))
+                        send_otp.putExtra("code", response.getString("code"))
+                        startActivity(send_otp)
+
+                    } else {
+                        //email not found
+                    }
+                },
+                { error ->
+                    // Handle errors here
+                })
+
+            queue.add(jsonObjectRequest)
+
+
         }
 
-
     }
+
     fun Validatetxt(textx: EditText): Boolean {
 
         var res: Boolean = true
@@ -62,6 +91,7 @@ class ForgotPassword : AppCompatActivity() {
         }
         return res
     }
+
     fun emailValidate(emailtxt: EditText): Boolean {
         var res: Boolean = true
 
