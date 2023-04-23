@@ -51,24 +51,24 @@ class BookReviews : AppCompatActivity() {
     private fun dataInitialize() {
         reviewArrayList = arrayListOf<Review>()
         bookName = arrayOf(
-            "Mitch Weiss",
-            "Antony Beevor",
-            "The Heart of Hell",
-            "Christian Jennings"
+            "How Far the Light Reaches",
+            "Undying Paperback",
+            "Wings of Fire",
+            "The Wager"
         )
         comment = arrayOf(
             getString(R.string.review_comment),
-            getString(R.string.review_comment),
-            getString(R.string.review_comment),
-            getString(R.string.review_comment)
+            "Excellent book with nice story. Thank you for sharing like this book.",
+            "Very Valuable story for everyone",
+            "Outstanding book thank you very much seller and author"
 
         )
 
         rating = arrayOf(
             resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating),
-            resources.getFloat(R.fraction.rating)
+            resources.getFloat(R.fraction.rating2),
+            resources.getFloat(R.fraction.rating3),
+            resources.getFloat(R.fraction.rating4)
         )
 
         for (i in bookName.indices){

@@ -14,6 +14,9 @@
     <string name="book_name_for_review">Book Name</string>
     <string name="review_comment">Unbelievable value, next level storytelling. Abel to get Best knowledge related to Businesses.</string>
     <fraction name="rating">4.0</fraction>
+    <fraction name="rating2">5.0</fraction>
+    <fraction name="rating3">3.0</fraction>
+    <fraction name="rating4">5.0</fraction>
 
 
 </resources>
