@@ -46,6 +46,20 @@ class OrderDetails : AppCompatActivity() {
                 status.setText("Status:" + response.getString("OrderStatus"))
                 //txt_qty.setText("QTY:" + response.getString(""))
                 total.setText("Total Amount:" + response.getString("TotalAmount"))
+
+                if (response.getString("OrderStatus") == "Accepted") {
+                    order_rev_btn.setOnClickListener()
+                    {
+                        var intentbtn = Intent(this@OrderDetails, PublishReview::class.java)
+                        startActivity(intentbtn)
+                    }
+
+                    buyNow.setOnClickListener() {
+                        var intentbtn = Intent(this@OrderDetails, CheckoutPay::class.java)
+                        intentbtn.putExtra("order_id", response.getString("OrderID"))
+                        startActivity(intentbtn)
+                    }
+                }
             },
             { error ->
                 // Handle errors here
@@ -58,16 +72,6 @@ class OrderDetails : AppCompatActivity() {
         }
 
 
-        order_rev_btn.setOnClickListener()
-        {
-            var intentbtn = Intent(this@OrderDetails, PublishReview::class.java)
-            startActivity(intentbtn)
-        }
-
-        buyNow.setOnClickListener() {
-            var intentbtn = Intent(this@OrderDetails, CheckoutPay::class.java)
-            startActivity(intentbtn)
-        }
     }
 
 }

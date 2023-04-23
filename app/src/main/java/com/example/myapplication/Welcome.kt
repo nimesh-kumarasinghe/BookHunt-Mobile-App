@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,6 +13,14 @@ class Welcome : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
 
         supportActionBar?.hide()
+
+        val sharedPref = getSharedPreferences("customer_data_sv", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPref.getBoolean("isLogin", false)
+
+        if (isLoggedIn == true) {
+            var bynw = Intent(this@Welcome, HomeScreen::class.java)
+            startActivity(bynw)
+        }
 
         var btn_signin= findViewById<Button>(R.id.btn_signin)
         var btn_creat_acc = findViewById<Button>(R.id.btn_create_acc)
