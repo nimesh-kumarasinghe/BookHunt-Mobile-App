@@ -84,7 +84,7 @@ class Shop : AppCompatActivity() {
                 storeImage = res.getString("ProfilePicture")
                 storeName = res.getString("ShopName")
                 storeAddress =
-                    res.getString("AddressNo") + res.getString("Street") + res.getString("City")
+                    res.getString("AddressNo") +" "+ res.getString("Street") +" "+ res.getString("City")
                 storeTelephone = "Telephone: "+res.getString("PhoneNo")
                 storeEmail = "Email: "+res.getString("Email")
                 storeDistance ="Distance: "+dt_x.getString("km")

@@ -170,40 +170,19 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_book_name_x" />
 
     <Button
-        android:id="@+id/btn_buy_nw_item"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="#FF007CEB"
-        android:fontFamily="@font/segui_semibld"
-        android:text="Buy Now"
-        android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="10sp"
+        android:id="@+id/button_minus"
+        android:layout_width="44dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="272dp"
+        android:backgroundTint="#FBFBFB"
+        android:fontFamily="@font/segoeuibld"
+        android:text="-"
+        android:textColor="#000"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
-
-    <Button
-        android:id="@+id/btn_add_to_cart_item"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="#CBCBCB"
-        android:fontFamily="@font/segui_semibld"
-        android:text="Add to Cart"
-        android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
+        app:layout_constraintVertical_bias="0.938" />
 
     <View
         android:id="@+id/view_qty"
@@ -212,23 +191,10 @@
         android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.698"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
-
-    <TextView
-        android:id="@+id/txt_quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_qty"
-        app:layout_constraintEnd_toStartOf="@+id/button_minus"
-        app:layout_constraintStart_toEndOf="@+id/button_plus"
-        app:layout_constraintTop_toTopOf="@+id/view_qty" />
+        app:layout_constraintVertical_bias="0.943" />
 
     <Button
         android:id="@+id/button_plus"
@@ -241,25 +207,42 @@
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toEndOf="@+id/btn_buy_nw_item"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.938" />
+
+    <TextView
+        android:id="@+id/txt_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_qty"
+        app:layout_constraintEnd_toStartOf="@+id/button_minus"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toEndOf="@+id/button_plus"
+        app:layout_constraintTop_toTopOf="@+id/view_qty"
+        app:layout_constraintVertical_bias="0.75" />
 
     <Button
-        android:id="@+id/button_minus"
-        android:layout_width="44dp"
-        android:layout_height="51dp"
-        android:backgroundTint="#FBFBFB"
-        android:fontFamily="@font/segoeuibld"
-        android:text="-"
-        android:textColor="#000"
-        android:textSize="15dp"
+        android:id="@+id/btn_buy_nw_item"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#FF007CEB"
+        android:fontFamily="@font/segui_semibld"
+        android:text="Buy Now"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_add_to_cart_item"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

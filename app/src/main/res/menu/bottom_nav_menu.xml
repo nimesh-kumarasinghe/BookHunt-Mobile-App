@@ -15,10 +15,6 @@
         android:icon="@drawable/ic_outline_shopping_bag"
         android:title="Order" />
     <item
-        android:id="@+id/cartFragment"
-        android:icon="@drawable/ic_outline_shopping_cart"
-        android:title="Cart" />
-    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_outline_person_ico"
         android:title="Profile" />

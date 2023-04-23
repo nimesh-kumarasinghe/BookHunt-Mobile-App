@@ -69,7 +69,7 @@
                 android:fontFamily="sans-serif"
                 android:text="Telephone No"
                 android:textColor="#000000"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_store_address"
                 app:layout_constraintTop_toBottomOf="@+id/txt_store_address" />
 
@@ -80,7 +80,7 @@
                 android:fontFamily="sans-serif"
                 android:text="Email"
                 android:textColor="#000000"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_store_telephone"
                 app:layout_constraintTop_toBottomOf="@+id/txt_store_telephone" />
 
@@ -119,6 +119,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Distance"
                 android:textColor="#000000"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/txt_store_email"
                 app:layout_constraintTop_toBottomOf="@+id/txt_store_email" />
 
