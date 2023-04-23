@@ -56,11 +56,11 @@ class ProfileFragment : Fragment() {
         val view: View = inflater!!.inflate(R.layout.fragment_profile, container, false)
 
 
-        view.findViewById<Button>(R.id.btn_edit_profile).setOnClickListener() {
+        /*view.findViewById<Button>(R.id.btn_edit_profile).setOnClickListener() {
             //Log.e("Data", "Edit Profile Button Clicked")
             var edit_profile = Intent(context, EditProfile::class.java)
             startActivity(edit_profile)
-        }
+        }*/
 
         view.findViewById<Button>(R.id.btn_signout_x).setOnClickListener() {
             val sharedPref =
@@ -103,19 +103,19 @@ class ProfileFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dataInitialize()
-        val layoutManager = LinearLayoutManager(context)
+        //dataInitialize()
+        /*val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.recyler_view_review_user_profile)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         adapter = ReviewAdapter(reviewArrayList)
-        recyclerView.adapter = adapter
+        recyclerView.adapter = adapter*/
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
-    @SuppressLint("ResourceType")
-    private fun dataInitialize() {
+//    @RequiresApi(Build.VERSION_CODES.Q)
+ //   @SuppressLint("ResourceType")
+ /*   private fun dataInitialize() {
         reviewArrayList = arrayListOf<Review>()
 
         bookName = arrayOf(
@@ -151,5 +151,5 @@ class ProfileFragment : Fragment() {
         }
 
 
-    }
+    }*/
 }

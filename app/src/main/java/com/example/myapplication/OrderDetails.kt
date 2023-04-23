@@ -41,11 +41,11 @@ class OrderDetails : AppCompatActivity() {
             null,
             { response ->
                 //book_name.setText("Book Name:" +response.getString(""))
-                order_no.setText("Order No:" + response.getString("OrderID"))
-                order_date.setText("Order Date:" + response.getString("OrderDate"))
-                status.setText("Status:" + response.getString("OrderStatus"))
+                order_no.setText("Order No: " + response.getString("OrderID"))
+                order_date.setText("Order Date: " + response.getString("OrderDate"))
+                status.setText("Status: " + response.getString("OrderStatus"))
                 //txt_qty.setText("QTY:" + response.getString(""))
-                total.setText("Total Amount:" + response.getString("TotalAmount"))
+                total.setText("Total Amount: " + response.getString("TotalAmount"))
 
                 if (response.getString("OrderStatus") == "Accepted") {
                     order_rev_btn.setOnClickListener()

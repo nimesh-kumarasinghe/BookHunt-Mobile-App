@@ -114,6 +114,7 @@
         android:hint="Password"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:password="true"
         android:textColorHint="#5B5B5B"
         android:textSize="15sp"
         app:flow_wrapMode="chain"

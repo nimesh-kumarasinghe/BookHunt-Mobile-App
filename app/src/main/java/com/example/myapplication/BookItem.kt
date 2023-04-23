@@ -53,7 +53,7 @@ class BookItem : AppCompatActivity() {
         val bk_quantity = findViewById<TextView>(R.id.txt_quantity)
         var btn_back = findViewById<ImageButton>(R.id.imgBtn_back_item)
         var transparency = findViewById<ImageView>(R.id.transparency)
-//        var cart = findViewById<Button>(R.id.btn_add_to_cart_item)
+        //var cart = findViewById<Button>(R.id.btn_add_to_cart_item)
 
         txt_book_name = findViewById(R.id.txt_book_name_x)
         txt_book_author = findViewById(R.id.txt_author)

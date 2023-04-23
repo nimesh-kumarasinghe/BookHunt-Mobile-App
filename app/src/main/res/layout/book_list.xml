@@ -16,84 +16,72 @@
         android:src="@drawable/book1"
         android:theme="@style/RoundCorner"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_description_text"
+        android:layout_width="215dp"
+        android:layout_height="104dp"
+        android:fontFamily="@font/segoeui_reg"
+        android:text="Description"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/ratingbar_recy"
+        app:layout_constraintTop_toBottomOf="@+id/ratingbar_recy" />
 
     <TextView
         android:id="@+id/txt_bookname_txt"
         android:layout_width="215dp"
         android:layout_height="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/segoeui_reg"
-        android:text="The Heart of Hell"
-        android:textAlignment="center"
+        android:text="Book Name"
+        android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_titleimg"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txt_price_text"
-        android:layout_width="215dp"
-        android:layout_height="35dp"
-        android:fontFamily="@font/segui_semibld"
-        android:text="500 LKR"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_autor_text" />
 
     <TextView
         android:id="@+id/txt_autor_text"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/segoeui_reg"
-        android:text="Mitch Weiss"
-        android:textAlignment="center"
+        android:text="Author"
+        android:textAlignment="textStart"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txt_bookname_txt"
         app:layout_constraintTop_toBottomOf="@+id/txt_bookname_txt" />
 
     <TextView
-        android:id="@+id/txt_description_text"
-        android:layout_width="205dp"
-        android:layout_height="45dp"
-        android:fontFamily="@font/segoeui_reg"
-        android:text="The untold story of courage and sacrifice in the shadow of Iwo Jima."
-        android:textAlignment="center"
+        android:id="@+id/txt_price_text"
+        android:layout_width="215dp"
+        android:layout_height="35dp"
+        android:fontFamily="@font/segui_semibld"
+        android:text="Price"
+        android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add_to_cart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.975"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingbar_recy"
-        app:layout_constraintVertical_bias="0.666" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_autor_text"
+        app:layout_constraintTop_toBottomOf="@+id/txt_autor_text" />
 
     <RatingBar
         android:id="@+id/ratingbar_recy"
         android:layout_width="230dp"
         android:layout_height="42dp"
+        android:clickable="false"
         android:isIndicator="true"
         android:numStars="5"
         android:progressTint="#EB9D00"
         android:rating="4"
         android:scaleX="0.25"
-        android:clickable="false"
         android:scaleY="0.25"
         android:secondaryProgressTint="#212121"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
-        app:layout_constraintStart_toStartOf="parent"
+        android:transformPivotY="0dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_price_text"
         app:layout_constraintTop_toBottomOf="@+id/txt_price_text" />
 
     <View
@@ -109,39 +97,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_titleimg"
         app:layout_constraintVertical_bias="0.333" />
-
-    <Button
-        android:id="@+id/btn_buy_nw"
-        android:layout_width="95dp"
-        android:layout_height="54dp"
-        android:backgroundTint="#FF007CEB"
-        android:fontFamily="@font/segui_semibld"
-        android:text="Buy Now"
-        android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_add_to_cart"
-        app:layout_constraintHorizontal_bias="0.933"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
-
-    <Button
-        android:id="@+id/btn_add_to_cart"
-        android:layout_width="95dp"
-        android:layout_height="54dp"
-        android:backgroundTint="#CBCBCB"
-        android:fontFamily="@font/segui_semibld"
-        android:text="Add to Cart"
-        android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

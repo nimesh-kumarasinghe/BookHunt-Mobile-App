@@ -23,7 +23,7 @@
         android:layout_width="225dp"
         android:layout_height="41dp"
         android:fontFamily="@font/segoeuibld"
-        android:text="Category Name"
+        android:text="Category"
         android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

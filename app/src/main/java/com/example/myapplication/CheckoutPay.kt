@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -34,6 +35,10 @@ class CheckoutPay : AppCompatActivity() {
                 if (url?.startsWith("https://api.icodingx.com/bookhunt/payments/") == true) {
                     // Payment was successful, handle the response here
                     // ...
+                    Toast.makeText(
+                        applicationContext, "Payment was successful",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     onBackPressed() // Go back to the app
                     return true // Return true to indicate that the URL was handled
                 }
