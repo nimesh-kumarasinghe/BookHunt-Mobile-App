@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -79,16 +80,19 @@ class OrderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPref = requireContext().getSharedPreferences("customer_data_sv", AppCompatActivity.MODE_PRIVATE)
+        val isLogin = sharedPref.getBoolean("isLogin", false)
+        val customer_id = sharedPref.getString("logged", null)
 
         val queue = Volley.newRequestQueue(requireContext())
-        val url = "https://api.icodingx.com/bookhunt/orders/search?CustomerID=1"
+        val url = "https://api.icodingx.com/bookhunt/orders/search?CustomerID=${customer_id}"
 
         val jsonArrayRequest = JsonArrayRequest(
             Request.Method.GET, url,
             null,
             { response ->
                 for (x in 0 until response.length()) {
-                    val order = response.getJSONObject(0)
+                    val order = response.getJSONObject(x)
                     orderArrayList.add(
                         Order(
                             order.getString("OrderID"),

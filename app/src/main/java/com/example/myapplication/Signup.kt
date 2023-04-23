@@ -7,6 +7,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONObject
 
 class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,12 +36,10 @@ class Signup : AppCompatActivity() {
             startActivity(already_acc)
         }
 
-        var btnc= findViewById<Button>(R.id.btn_signup)
+        var btnc = findViewById<Button>(R.id.btn_signup)
 
         btnc.setOnClickListener()
         {
-            var bb = Intent(this@Signup, Signin::class.java)
-            startActivity(bb)
 
 
             var validatex: Boolean = true
@@ -151,18 +153,62 @@ class Signup : AppCompatActivity() {
                     ).show()
                 }
             }
-            if (validatex == true){
+            if (validatex == true) {
                 Toast.makeText(
                     applicationContext, "Success",
                     Toast.LENGTH_LONG
                 ).show()
 
                 //Signup details here
+
+
+
+                val jsonObject = JSONObject()
+                jsonObject.put("AddressNo", address_no.text)
+                jsonObject.put("CPassword", password.text)
+                jsonObject.put("City", city.text)
+                jsonObject.put("Email", email.text)
+                jsonObject.put("FirstName", txt_first_name.text)
+                jsonObject.put("LastName", txt_last_name.text)
+                jsonObject.put("PhoneNo", number.text)
+                jsonObject.put("PostalCode", postal_code.text)
+                jsonObject.put("ProfilePicture", "https://api.icodingx.com/bookhunt/uploads/437f7035-a090-4bf3-b6cd-a296a2c2ed53.jpg")
+                jsonObject.put("Street", street.text)
+
+                val queue = Volley.newRequestQueue(this.applicationContext)
+
+                val jsonObjectRequest = JsonObjectRequest(Request.Method.POST,
+                    "https://api.icodingx.com/bookhunt/customers/",
+                    jsonObject,
+                    { response ->
+                        Toast.makeText(
+                            applicationContext, "Account created successfully",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+
+
+                        val sharedPref  = getSharedPreferences("customer_data_sv", MODE_PRIVATE)
+                        var editor = sharedPref.edit()
+                        editor.putBoolean("isLogin",true)
+                        editor.putString("logged",response.getString("CustomerID"))
+                        editor.apply()
+
+                        var bb = Intent(this@Signup, Signin::class.java)
+                        startActivity(bb)
+                    },
+                    { error ->
+                        // Handle errors here
+                    })
+
+                queue.add(jsonObjectRequest)
             }
+
 
         }
 
     }
+
     fun Validatetxt(textx: EditText): Boolean {
 
         var res: Boolean = true
@@ -187,6 +233,7 @@ class Signup : AppCompatActivity() {
 
         return res
     }
+
     fun emailValidate(emailtxt: EditText): Boolean {
         var res: Boolean = true
 
@@ -198,6 +245,7 @@ class Signup : AppCompatActivity() {
 
         return res
     }
+
     fun passwordValidate(pwdtxt: EditText): Boolean {
         var res: Boolean = true
         var pwdx = pwdtxt.text
