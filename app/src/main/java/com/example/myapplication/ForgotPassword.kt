@@ -32,51 +32,57 @@ class ForgotPassword : AppCompatActivity() {
         {
 
 
-//            var validatex: Boolean = true
-//
-//            if (Validatetxt(forgotpasswordEmail) == false) {
-//                if (validatex == true) {
-//                    validatex = false
-//                    Toast.makeText(
-//                        applicationContext, "Email Cannot Be Empty",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//            if (emailValidate(forgotpasswordEmail) == false) {
-//                if (validatex == true) {
-//                    validatex = false
-//                    Toast.makeText(
-//                        applicationContext, "Invalid email address",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-            val queue = Volley.newRequestQueue(this.applicationContext)
+            var validatex: Boolean = true
+
+            if (Validatetxt(forgotpasswordEmail) == false) {
+                if (validatex == true) {
+                    validatex = false
+                    Toast.makeText(
+                        applicationContext, "Email Cannot Be Empty",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            if (emailValidate(forgotpasswordEmail) == false) {
+                if (validatex == true) {
+                    validatex = false
+                    Toast.makeText(
+                        applicationContext, "Invalid email address",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            if(validatex == true){
+                val queue = Volley.newRequestQueue(this.applicationContext)
 
 
-            val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET,
-                "https://api.icodingx.com/bookhunt/customers/forgot-password?Email=${forgotpasswordEmail.text}",
-                null,
-                { response ->
-                    //success
-                    if (response.getString("Status") == "True") {
+                val jsonObjectRequest = JsonObjectRequest(
+                    Request.Method.GET,
+                    "https://api.icodingx.com/bookhunt/customers/forgot-password?Email=${forgotpasswordEmail.text}",
+                    null,
+                    { response ->
+                        //success
+                        if (response.getString("Status") == "True") {
 
-                        var send_otp = Intent(this@ForgotPassword, OtpPage::class.java)
-                        send_otp.putExtra("customer_id", response.getString("SellerID"))
-                        send_otp.putExtra("code", response.getString("code"))
-                        startActivity(send_otp)
+                            var send_otp = Intent(this@ForgotPassword, OtpPage::class.java)
+                            send_otp.putExtra("customer_id", response.getString("SellerID"))
+                            send_otp.putExtra("code", response.getString("code"))
+                            startActivity(send_otp)
 
-                    } else {
-                        //email not found
-                    }
-                },
-                { error ->
-                    // Handle errors here
-                })
+                        } else {
+                            Toast.makeText(
+                                applicationContext, "Email not found",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    },
+                    { error ->
+                        // Handle errors here
+                    })
 
-            queue.add(jsonObjectRequest)
+                queue.add(jsonObjectRequest)
+            }
+
 
 
         }

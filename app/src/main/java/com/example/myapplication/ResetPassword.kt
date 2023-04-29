@@ -29,94 +29,92 @@ class ResetPassword : AppCompatActivity() {
 
         btn_reset_pwd.setOnClickListener()
         {
-            val queue = Volley.newRequestQueue(this.applicationContext)
 
-            val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET,
-                "https://api.icodingx.com/bookhunt/customers/${customer_id}",
-                null,
-                { response ->
-                    response.put("CPassword", confirmPassword.text.toString())
-
-                    val putRequest = object : JsonObjectRequest(
-                        Request.Method.PUT,
-                        "https://api.icodingx.com/bookhunt/customers/${customer_id}",
-                        response,
-                        { putResponse ->
-                            // Handle the response from the server here
-                            var reset_pwd = Intent(this@ResetPassword, Success::class.java)
-                            startActivity(reset_pwd)
-                        },
-                        { error ->
-                            // Handle errors here
-                        }
-                    ) {
-                        override fun getHeaders(): MutableMap<String, String> {
-                            val headers = HashMap<String, String>()
-                            headers["Content-Type"] = "application/json"
-                            return headers
-                        }
-                    }
-
-                    queue.add(putRequest)
-
-                },
-                { error ->
-                    // Handle errors here
-                })
-
-            queue.add(jsonObjectRequest)
 
 //            var reset_pwd = Intent(this@ResetPassword, Success::class.java)
 //            startActivity(reset_pwd)
 
-//            var validatex: Boolean = true
-//            if (Validatetxt(newPassword) == false) {
-//                if (validatex == true) {
-//                    validatex = false
-//                    Toast.makeText(
-//                        applicationContext, "Password Cannot Be Empty",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//            if (Validatetxt(confirmPassword) == false) {
-//                if (validatex == true) {
-//                    validatex = false
-//                    Toast.makeText(
-//                        applicationContext, "Password Cannot Be Empty",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//            if (passwordValidate(newPassword) == false) {
-//                if (validatex == true) {
-//                    validatex = false
-//                    Toast.makeText(
-//                        applicationContext, "Your password should be more than 8 characters",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//            if (passwordValidate(confirmPassword) == false) {
-//                if (validatex == true) {
-//                    validatex = false
-//                    Toast.makeText(
-//                        applicationContext, "Your password should be more than 8 characters",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//            if(validatex == true){
-//                //reset function
-//            }
-        }
+            var validatex: Boolean = true
+            if (Validatetxt(newPassword) == false) {
+                if (validatex == true) {
+                    validatex = false
+                    Toast.makeText(
+                        applicationContext, "Password Cannot Be Empty",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            if (Validatetxt(confirmPassword) == false) {
+                if (validatex == true) {
+                    validatex = false
+                    Toast.makeText(
+                        applicationContext, "Password Cannot Be Empty",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            if (passwordValidate(newPassword) == false) {
+                if (validatex == true) {
+                    validatex = false
+                    Toast.makeText(
+                        applicationContext, "Your password should be more than 8 characters",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
 
+            if(validatex == true){
+                val queue = Volley.newRequestQueue(this.applicationContext)
+
+                val jsonObjectRequest = JsonObjectRequest(
+                    Request.Method.GET,
+                    "https://api.icodingx.com/bookhunt/customers/${customer_id}",
+                    null,
+                    { response ->
+                        response.put("CPassword", confirmPassword.text.toString())
+
+                        val putRequest = object : JsonObjectRequest(
+                            Request.Method.PUT,
+                            "https://api.icodingx.com/bookhunt/customers/${customer_id}",
+                            response,
+                            { putResponse ->
+                                // Handle the response from the server here
+                                var reset_pwd = Intent(this@ResetPassword, Success::class.java)
+                                startActivity(reset_pwd)
+
+                                Toast.makeText(
+                                    applicationContext, "Password Reset Successfull",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            },
+                            { error ->
+                                // Handle errors here
+                            }
+                        ) {
+                            override fun getHeaders(): MutableMap<String, String> {
+                                val headers = HashMap<String, String>()
+                                headers["Content-Type"] = "application/json"
+                                return headers
+                            }
+                        }
+
+                        queue.add(putRequest)
+
+                    },
+                    { error ->
+                        // Handle errors here
+                    })
+
+                queue.add(jsonObjectRequest)
+            }
+            }
         btn_img.setOnClickListener()
         {
             onBackPressed()
         }
-    }
+
+        }
+
 
     fun Validatetxt(textx: EditText): Boolean {
 
@@ -137,4 +135,5 @@ class ResetPassword : AppCompatActivity() {
 
         return res
     }
-}
+    }
+

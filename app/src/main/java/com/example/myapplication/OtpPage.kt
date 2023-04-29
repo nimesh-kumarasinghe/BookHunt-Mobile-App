@@ -26,26 +26,30 @@ class OtpPage : AppCompatActivity() {
         btn_verfy.setOnClickListener()
         {
 
-            if (code.toString() == OTP.text.toString()) {
-                var otp_verify = Intent(this@OtpPage, ResetPassword::class.java)
-                otp_verify.putExtra("customer_id", customer_id)
-                startActivity(otp_verify)
-            } else {
-                //invalid code
+
+            var validatex: Boolean = true
+
+            if (Validatetxt(OTP) == false) {
+                if (validatex == true) {
+                    validatex = false
+                    Toast.makeText(
+                        applicationContext, "OTP Empty",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-
-
-//            var validatex: Boolean = true
-//
-//            if (Validatetxt(OTP) == false) {
-//                if (validatex == true) {
-//                    validatex = false
-//                    Toast.makeText(
-//                        applicationContext, "OTP Empty",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
+            if(validatex == true){
+                if (code.toString() == OTP.text.toString()) {
+                    var otp_verify = Intent(this@OtpPage, ResetPassword::class.java)
+                    otp_verify.putExtra("customer_id", customer_id)
+                    startActivity(otp_verify)
+                } else {
+                    Toast.makeText(
+                        applicationContext, "Invalid OTP",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
 
         }
 

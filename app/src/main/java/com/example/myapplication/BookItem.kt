@@ -112,7 +112,10 @@ class BookItem : AppCompatActivity() {
                         "https://api.icodingx.com/bookhunt/order-books/",
                         jsonObject,
                         { res ->
-                            // Add Toast message here // success
+                            Toast.makeText(
+                                applicationContext, "Order Placed",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         },
                         { error ->
                             // Handle errors here
